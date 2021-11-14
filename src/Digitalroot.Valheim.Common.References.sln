@@ -12,6 +12,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{E64D67E6-C2B6-471C-990D-2E9A91427B64}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{1960DCD1-3C51-48FF-BFF8-5FE4C3CBABB2}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\nuget.release.yml = ..\.github\workflows\nuget.release.yml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D1947A80-A380-4679-AC1F-19402049E8EE}"
 	ProjectSection(SolutionItems) = preProject
@@ -19,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D1947A80-A
 		..\docs\README.md = ..\docs\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digitalroot.Valheim.Common.References", "Digitalroot.Valheim.Common.References\Digitalroot.Valheim.Common.References.csproj", "{9EABDC9F-B065-4DAC-A070-8E23D836D4F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Digitalroot.Valheim.Common.References", "Digitalroot.Valheim.Common.References\Digitalroot.Valheim.Common.References.csproj", "{9EABDC9F-B065-4DAC-A070-8E23D836D4F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
