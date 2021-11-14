@@ -11,8 +11,8 @@
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
 		<Copyright>Copyright © Digitalroot Technologies 2021 - 2022</Copyright>
-		<PackageProjectUrl>https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.Common.Utils</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.Common.Utils</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.Common.References</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.Common.References</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageIcon>ValheimRcon_black.png</PackageIcon>
 		<PackageIconUrl />
@@ -23,7 +23,8 @@
 		<Description>References for Valheim</Description>
 		<PackageReleaseNotes>Initial Release</PackageReleaseNotes>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<VersionPrefix>0.204.4.0</VersionPrefix>
+		<DefaultPushSource>https://nuget.pkg.github.com/Digitalroot-Valheim/index.json</DefaultPushSource>
+		<Version>0.204.4</Version>
 		<RestoreAdditionalProjectSources>
 			https://nuget.bepinex.dev/v3/index.json;
 			https://digitalroot-valheim-nuget.s3.us-west-2.amazonaws.com/index.json
