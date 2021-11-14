@@ -23,4 +23,5 @@ jobs:
       #srcpath: src
       #unittestpath: UnitTests
       skipunittest: true
+      forceassemblyversion: true
       #awsregion: us-west-2
