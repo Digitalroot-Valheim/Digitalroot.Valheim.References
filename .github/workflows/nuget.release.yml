@@ -16,6 +16,7 @@ jobs:
   call-workflow-nuget-release:
     permissions:
       packages: write
+      contents: read
     uses: Digitalroot-Valheim/.github/.github/workflows/nuget.release.yml@main
     secrets:
       awsaccesskeyid: ${{ secrets.NUGET_S3_REPO_KEY_ID }}
