@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>Digitalroot.Valheim.Common.References</AssemblyName>
+		<TargetFrameworks>net462</TargetFrameworks>
+		<LangVersion>9</LangVersion>
+		<PackageId>Digitalroot.Valheim.Common.References</PackageId>
+		<RootNamespace>Digitalroot.Valheim.References</RootNamespace>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<IncludeBuildOutput>false</IncludeBuildOutput>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
+		<Copyright>Copyright © Digitalroot Technologies 2021 - 2022</Copyright>
+		<PackageProjectUrl>https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.Common.Utils</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.Common.Utils</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageIcon>ValheimRcon_black.png</PackageIcon>
+		<PackageIconUrl />
+		<PackageTags>valheim, digitalroot, references</PackageTags>
+		<Authors>Digitalroot</Authors>
+		<Company>Digitalroot Technologies</Company>
+		<Product>Digitalroot Valheim References</Product>
+		<Description>References for Valheim</Description>
+		<PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<VersionPrefix>0.204.4.0</VersionPrefix>
+		<RestoreAdditionalProjectSources>
+			https://nuget.bepinex.dev/v3/index.json;
+			https://digitalroot-valheim-nuget.s3.us-west-2.amazonaws.com/index.json
+		</RestoreAdditionalProjectSources>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net462|AnyCPU'">
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\ico\ValheimRcon_black.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="lib\*.dll">
+			<Pack>True</Pack>
+			<PackagePath>lib\net462</PackagePath>
+		</None>
+	</ItemGroup>
+
+</Project>
