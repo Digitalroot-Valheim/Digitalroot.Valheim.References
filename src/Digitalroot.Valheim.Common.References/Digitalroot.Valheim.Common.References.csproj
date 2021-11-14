@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.Build.NoTargets/1.0.26">
 
 	<PropertyGroup>
 		<AssemblyName>Digitalroot.Valheim.Common.References</AssemblyName>
@@ -23,7 +23,6 @@
 		<Description>References for Valheim</Description>
 		<PackageReleaseNotes>Initial Release</PackageReleaseNotes>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<DefaultPushSource>https://nuget.pkg.github.com/Digitalroot-Valheim/index.json</DefaultPushSource>
 		<Version>0.204.4</Version>
 		<RestoreAdditionalProjectSources>
 			https://nuget.bepinex.dev/v3/index.json;
