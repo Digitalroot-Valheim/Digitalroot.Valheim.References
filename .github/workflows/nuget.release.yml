@@ -10,7 +10,6 @@ on:
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
-  NUGET_AUTH_TOKEN: ${{ secrets.NUGET_PAT }}
 
 jobs:
   call-workflow-nuget-release:
