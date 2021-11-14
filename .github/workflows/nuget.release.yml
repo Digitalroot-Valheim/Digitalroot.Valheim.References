@@ -10,13 +10,10 @@ on:
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
-  NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  NUGET_AUTH_TOKEN: ${{ secrets.NUGET_PAT }}
 
 jobs:
   call-workflow-nuget-release:
-    permissions:
-      packages: write
-      contents: read
     uses: Digitalroot-Valheim/.github/.github/workflows/nuget.release.yml@main
     secrets:
       awsaccesskeyid: ${{ secrets.NUGET_S3_REPO_KEY_ID }}
