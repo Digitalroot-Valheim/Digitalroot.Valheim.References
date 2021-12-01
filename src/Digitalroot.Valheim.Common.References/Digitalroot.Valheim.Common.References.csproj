@@ -5,7 +5,7 @@
 		<TargetFrameworks>net462</TargetFrameworks>
 		<LangVersion>9</LangVersion>
 		<PackageId>Digitalroot.Valheim.Common.References</PackageId>
-		<RootNamespace>Digitalroot.Valheim.References</RootNamespace>
+		<RootNamespace>Digitalroot.Valheim.Common.References</RootNamespace>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<IncludeBuildOutput>false</IncludeBuildOutput>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -23,12 +23,15 @@
 		<Description>References for Valheim</Description>
 		<PackageReleaseNotes>Initial Release</PackageReleaseNotes>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<Version>0.205.5</Version>
+		<Version>0.205.6</Version>
 		<RestoreAdditionalProjectSources>
 			https://api.nuget.org/v3/index.json;
 			https://nuget.bepinex.dev/v3/index.json;
 			https://digitalroot-valheim-nuget.s3.us-west-2.amazonaws.com/index.json
 		</RestoreAdditionalProjectSources>
+		<ApplicationIcon>ValheimRcon_black.ico</ApplicationIcon>
+		<IsPublishable>False</IsPublishable>
+		<DebugType>none</DebugType>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net462|AnyCPU'">
@@ -47,8 +50,9 @@
 	<ItemGroup>
 		<None Include="lib\*.dll">
 			<Pack>True</Pack>
-			<PackagePath>lib\net462</PackagePath>
+			<PackagePath>ref\net462</PackagePath>
 		</None>
 	</ItemGroup>
 
 </Project>
+
