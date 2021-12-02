@@ -17,15 +17,12 @@ jobs:
     secrets:
       aws-access-key-id: ${{ secrets.NUGET_S3_REPO_KEY_ID }}
       aws-secret-access-key: ${{ secrets.NUGET_S3_REPO_KEY_SECRET }}
+      nuget-org-key: ${{ secrets.NUGET_ORG_PAT }}
     with:
       sln-file-name: Digitalroot.Valheim.Common.References
       proj-file-name: Digitalroot.Valheim.Common.References
-      #src-path: src
-      #unit-test-path: UnitTests
       skip-unit-tests: true
       force-assembly-version: true
-      #awsregion: us-west-2
-      #create-github-release: false
-      #aws-region: us-west-2
       nuget-gh-upload: true
       nuget-s3-upload: true
+      nuget-org-upload: true
