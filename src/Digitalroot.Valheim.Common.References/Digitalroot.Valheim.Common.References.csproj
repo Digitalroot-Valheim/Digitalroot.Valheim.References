@@ -23,7 +23,7 @@
 		<Description>References for Valheim</Description>
 		<PackageReleaseNotes>Initial Release</PackageReleaseNotes>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<Version>0.205.6</Version>
+		<Version>0.205.7</Version>
 		<RestoreAdditionalProjectSources>
 			https://api.nuget.org/v3/index.json;
 			https://nuget.bepinex.dev/v3/index.json;
