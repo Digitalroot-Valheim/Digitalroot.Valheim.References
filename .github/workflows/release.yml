@@ -23,7 +23,6 @@ jobs:
     with:
       sln-file-name: Digitalroot.Valheim.Common.References
       proj-file-name: Digitalroot.Valheim.Common.References
-      skip-unit-tests: true
       force-assembly-version: true
       nuget-gh-upload: true
       nuget-s3-upload: true
