@@ -10,7 +10,7 @@
 		<IncludeBuildOutput>false</IncludeBuildOutput>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
-		<Copyright>Copyright © Digitalroot Technologies 2021 - 2022</Copyright>
+		<Copyright>Copyright © Digitalroot Technologies 2021 - 2023</Copyright>
 		<PackageProjectUrl>https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.Common.References</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.Common.References</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -21,9 +21,9 @@
 		<Company>Digitalroot Technologies</Company>
 		<Product>Digitalroot Valheim References</Product>
 		<Description>References for Valheim</Description>
-		<PackageReleaseNotes>Update to Valheim 0.212.6</PackageReleaseNotes>
+		<PackageReleaseNotes>Update to Valheim 0.212.6 + U 2020.3.33</PackageReleaseNotes>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<Version>0.212.6</Version>
+		<Version>0.212.7</Version>
 		<RestoreAdditionalProjectSources>
 			https://api.nuget.org/v3/index.json;
 			https://nuget.bepinex.dev/v3/index.json;
