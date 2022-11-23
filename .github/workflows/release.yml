@@ -1,6 +1,8 @@
 name: Release
 
 on:
+  workflow_dispatch:
+    branches: [ main ] # Default release branch
   push:
     branches: [ main ] # Default release branch
     paths:
