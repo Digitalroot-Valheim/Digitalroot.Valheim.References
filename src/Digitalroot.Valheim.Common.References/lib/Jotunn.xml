@@ -1672,6 +1672,16 @@
             </summary>
             <param name="zoneVegetation">ZoneVegetation to copy</param>
         </member>
+        <member name="M:Jotunn.DebugUtils.DebugHelper.ZoneSystem_SpawnLocation(ZoneSystem.ZoneLocation,ZoneSystem.SpawnMode)">
+            <summary>
+                Output custom location spawns
+            </summary>
+        </member>
+        <member name="T:Jotunn.DebugUtils.DebugHelper.Debug_isDebugBuild">
+            <summary>
+                Pretend to be a debugBuild :)
+            </summary>
+        </member>
         <member name="T:Jotunn.Entities.ConsoleCommand">
             <summary>
                 A custom console command.
@@ -4187,12 +4197,13 @@
             </summary>
             <param name="prefab"><see cref="T:UnityEngine.GameObject"/> with an <see cref="T:ItemDrop"/> component to add to the <see cref="T:ObjectDB"/></param>
         </member>
-        <member name="M:Jotunn.Managers.ItemManager.RegisterItemInObjectDB(ObjectDB,UnityEngine.GameObject)">
+        <member name="M:Jotunn.Managers.ItemManager.RegisterItemInObjectDB(ObjectDB,UnityEngine.GameObject,BepInEx.BepInPlugin)">
             <summary>
                 Internal method for adding a prefab to a specific ObjectDB.
             </summary>
             <param name="objectDB"><see cref="T:ObjectDB"/> the prefab should be added to</param>
             <param name="prefab"><see cref="T:UnityEngine.GameObject"/> with an <see cref="T:ItemDrop"/> component to add</param>
+            <param name="sourceMod"><see cref="T:BepInEx.BepInPlugin"/> which created the prefab</param>
         </member>
         <member name="M:Jotunn.Managers.ItemManager.RegisterCustomRecipes(ObjectDB)">
             <summary>
@@ -4388,42 +4399,42 @@
             </summary>
         </member>
         <member name="F:Jotunn.Managers.LocalizationManager.Localizations">
-            <summary> 
+            <summary>
                 List where all data is collected.
             </summary>
         </member>
         <member name="F:Jotunn.Managers.LocalizationManager.TokenFirstChar">
-            <summary> 
+            <summary>
                 Your token must start with this character.
             </summary>
         </member>
         <member name="F:Jotunn.Managers.LocalizationManager.DefaultLanguage">
-            <summary> 
+            <summary>
                 Default language of the game.
             </summary>
         </member>
         <member name="F:Jotunn.Managers.LocalizationManager.TranslationsFolderName">
-            <summary> 
+            <summary>
                 Name of the folder that will hold the custom .json translations files.
             </summary>
         </member>
         <member name="F:Jotunn.Managers.LocalizationManager.CommunityTranslationFileName">
-            <summary> 
+            <summary>
                 Name of the community translation files that will be the first custom languages files loaded before any others.
             </summary>
         </member>
         <member name="F:Jotunn.Managers.LocalizationManager.ForbiddenChars">
-            <summary> 
+            <summary>
                 String of chars not allowed in a token string.
             </summary>
         </member>
         <member name="F:Jotunn.Managers.LocalizationManager.ForbiddenCharsArr">
-            <summary> 
+            <summary>
                 Array of chars not allowed in a token string.
             </summary>
         </member>
         <member name="P:Jotunn.Managers.LocalizationManager.Instance">
-            <summary> 
+            <summary>
                 The singleton instance of this manager.
             </summary>
         </member>
@@ -4433,7 +4444,7 @@
             </summary>
         </member>
         <member name="F:Jotunn.Managers.LocalizationManager.JotunnLocalization">
-            <summary> 
+            <summary>
                 Localizations for internal use.
             </summary>
         </member>
@@ -4446,12 +4457,12 @@
             </summary>
         </member>
         <member name="F:Jotunn.Managers.LocalizationManager.DoQuoteLineSplit">
-            <summary> 
+            <summary>
                 Call into unity's DoQuoteLineSplit.
             </summary>
         </member>
         <member name="M:Jotunn.Managers.LocalizationManager.Init">
-            <summary> 
+            <summary>
                 Initialize localization manager.
             </summary>
         </member>
@@ -5166,6 +5177,11 @@
             <param name="pieceTable">Prefab or item name of the PieceTable</param>
             <param name="category">Optional category string, does not create new custom categories</param>
         </member>
+        <member name="M:Jotunn.Managers.PieceManager.RegisterPieceInPieceTable(UnityEngine.GameObject,System.String,System.String,BepInEx.BepInPlugin)">
+            <summary>
+                Internal method for adding a prefab to a piece table.
+            </summary>
+        </member>
         <member name="M:Jotunn.Managers.PieceManager.ReloadKnownRecipes(Player)">
             <summary>
                 Hook on <see cref="M:Player.OnSpawned"/> to refresh recipes for the custom items.
@@ -5292,7 +5308,7 @@
             </summary>
             <param name="name">The name of the prefab to destroy</param>
         </member>
-        <member name="M:Jotunn.Managers.PrefabManager.RegisterAllToZNetScene(ZNetScene)">
+        <member name="M:Jotunn.Managers.PrefabManager.RegisterAllToZNetScene">
             <summary>
                 Register all custom prefabs to m_prefabs/m_namedPrefabs in <see cref="T:ZNetScene" />.
             </summary>
@@ -5304,7 +5320,7 @@
             </summary>
             <param name="gameObject"></param>
         </member>
-        <member name="M:Jotunn.Managers.PrefabManager.InvokeOnVanillaObjectsAvailable(ObjectDB,ObjectDB)">
+        <member name="M:Jotunn.Managers.PrefabManager.InvokeOnVanillaObjectsAvailable">
             <summary>
                 Safely invoke the <see cref="E:Jotunn.Managers.PrefabManager.OnVanillaPrefabsAvailable"/> event
             </summary>
@@ -5384,7 +5400,7 @@
             </summary>
             <param name="target">GameObject to render</param>
             <param name="callback">Callback for the generated <see cref="T:UnityEngine.Sprite"/></param>
-            <returns>If this is called on a headless server or when there is no active visual Mesh attached to the target, this method invokes the callback with null immediately and returns false.</returns>
+            <returns>If no active visual component is attached to the target or any child, this method invokes the callback with null immediately and returns false.</returns>
         </member>
         <member name="M:Jotunn.Managers.RenderManager.EnqueueRender(Jotunn.Managers.RenderManager.RenderRequest,System.Action{UnityEngine.Sprite})">
             <summary>
@@ -5392,7 +5408,7 @@
             </summary>
             <param name="renderRequest"></param>
             <param name="callback">Callback for the generated <see cref="T:UnityEngine.Sprite"/></param>
-            <returns>If this is called on a headless server or when there is no active visual Mesh attached to the target, this method invokes the callback with null immediately and returns false.</returns>
+            <returns>If no active visual component is attached to the target or any child, this method invokes the callback with null immediately and returns false.</returns>
         </member>
         <member name="M:Jotunn.Managers.RenderManager.EnqueueRender(UnityEngine.GameObject,System.Action{UnityEngine.Sprite},System.Int32,System.Int32)">
             <summary>
@@ -5410,7 +5426,7 @@
                 Create a <see cref="T:UnityEngine.Sprite"/> of the <paramref name="target"/>
             </summary>
             <param name="target">Can be a prefab or any existing GameObject in the world</param>
-            <returns>If this is called on a headless server or when there is no active visual Mesh attached to the target, this method returns null.</returns>
+            <returns>If no active visual component is attached to the target or any child, this method returns null.</returns>
         </member>
         <member name="M:Jotunn.Managers.RenderManager.Render(UnityEngine.GameObject,UnityEngine.Quaternion)">
             <summary>
@@ -5418,14 +5434,14 @@
             </summary>
             <param name="target">Can be a prefab or any existing GameObject in the world</param>
             <param name="rotation">Rotation while rendering of the GameObject. See <code>RenderManager.IsometricRotation</code> for example/></param>
-            <returns>If this is called on a headless server or when there is no active visual Mesh attached to the target, this method returns null.</returns>
+            <returns>If no active visual component is attached to the target or any child, this method returns null.</returns>
         </member>
         <member name="M:Jotunn.Managers.RenderManager.Render(Jotunn.Managers.RenderManager.RenderRequest)">
             <summary>
                 Create a <see cref="T:UnityEngine.Sprite"/> from a <see cref="T:Jotunn.Managers.RenderManager.RenderRequest"/>/>
             </summary>
             <param name="renderRequest"></param>
-            <returns>If this is called on a headless server or when there is no active visual Mesh attached to the target, this method returns null.</returns>
+            <returns>If no active visual component is attached to the target or any child, this method returns null.</returns>
         </member>
         <member name="M:Jotunn.Managers.RenderManager.SpawnSafe(Jotunn.Managers.RenderManager.RenderRequest)">
             <summary>
@@ -6000,6 +6016,21 @@
             <param name="baseName">name of the existing location to copy</param>
             <returns>A CustomLocation object with the cloned location prefab</returns>
         </member>
+        <member name="M:Jotunn.Managers.ZoneManager.RemoveCustomLocation(System.String)">
+            <summary>
+                Remove a CustomLocation by its name.<br />
+                Removes the CustomLocation from the manager.
+                Does not remove the location from any current ZoneSystem instance.
+            </summary>
+            <param name="name">Name of the CustomLocation to search for.</param>
+        </member>
+        <member name="M:Jotunn.Managers.ZoneManager.DestroyCustomLocation(System.String)">
+            <summary>
+                Destroy a CustomLocation by its name.<br />
+                Removes the CustomLocation from the manager and from the <see cref="T:ZoneSystem"/> if instantiated.
+            </summary>
+            <param name="name">Name of the CustomLocation to search for.</param>
+        </member>
         <member name="M:Jotunn.Managers.ZoneManager.AddCustomVegetation(Jotunn.Entities.CustomVegetation)">
             <summary>
                 Register a CustomVegetation to be added to the ZoneSystem
@@ -6019,6 +6050,13 @@
             <param name="name">Name of the ZoneVegetation to search for.</param>
             <returns>The existing ZoneVegetation, or null if none exists with given name</returns>
         </member>
+        <member name="M:Jotunn.Managers.ZoneManager.RemoveCustomVegetation(System.String)">
+            <summary>
+                Remove a CustomVegetation from this manager by its name.<br />
+                Does not remove it from any current ZoneSystem instance.
+            </summary>
+            <param name="name">Name of the CustomVegetation to search for.</param>
+        </member>
         <member name="M:Jotunn.Managers.ZoneManager.AddCustomClutter(Jotunn.Entities.CustomClutter)">
             <summary>
                 Register a CustomClutter to be added to the ClutterSystem
@@ -6037,6 +6075,29 @@
             </summary>
             <param name="name">Name of the Clutter to search for.</param>
             <returns>The existing Clutter, or null if none exists with given name</returns>
+        </member>
+        <member name="M:Jotunn.Managers.ZoneManager.RemoveCustomClutter(System.String)">
+            <summary>
+                Remove a CustomClutter from this manager by its name.<br />
+                Does not remove it from any current ClutterSystem instance.
+            </summary>
+            <param name="name">Name of the CustomClutter to search for.</param>
+        </member>
+        <member name="M:Jotunn.Managers.ZoneManager.RegisterLocationInZoneSystem(ZoneSystem.ZoneLocation)">
+            <summary>
+                Register a single ZoneLocaton in the current ZoneSystem.
+                Also adds the location prefabs to the <see cref="T:Jotunn.Managers.PrefabManager"/> and <see cref="T:ZNetScene"/> if necessary.<br />
+                No mock references are fixed.
+            </summary>
+            <param name="zoneLocation"><see cref="T:ZoneSystem.ZoneLocation"/> to add to the <see cref="T:ZoneSystem"/></param>
+        </member>
+        <member name="M:Jotunn.Managers.ZoneManager.RegisterLocationInZoneSystem(ZoneSystem,ZoneSystem.ZoneLocation,BepInEx.BepInPlugin)">
+            <summary>
+                Internal method for adding a ZoneLocation to a specific ZoneSystem.
+            </summary>
+            <param name="zoneSystem"><see cref="T:ZoneSystem"/> the location should be added to</param>
+            <param name="zoneLocation"><see cref="T:ZoneSystem.ZoneLocation"/> to add</param>
+            <param name="sourceMod"><see cref="T:BepInEx.BepInPlugin"/> which created the location</param>
         </member>
         <member name="M:Jotunn.Managers.ZoneManager.InvokeOnVanillaLocationsAvailable">
             <summary>
@@ -7137,7 +7198,7 @@
         </member>
         <member name="M:Jotunn.Utils.ModRegistry.GetMods(System.Boolean)">
             <summary>
-                Get all loaded mod's metadata
+                Get all loaded mod's metadata which are depending on Jötunn
             </summary>
             <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:Jotunn.Utils.ModRegistry.ModInfo"/> for all loaded mods</returns>
         </member>
@@ -7257,6 +7318,12 @@
             </summary>
             <param name="modGuid">GUID of the mod</param>
             <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:Jotunn.Entities.CustomVegetation"/> from a specific mod</returns>
+        </member>
+        <member name="M:Jotunn.Utils.ModRegistry.GetClutter">
+            <summary>
+                Get all added <see cref="T:Jotunn.Entities.CustomClutter">CustomClutter</see>
+            </summary>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:Jotunn.Entities.CustomClutter"/> from all loaded mods</returns>
         </member>
         <member name="M:Jotunn.Utils.ModRegistry.GetClutter(System.String)">
             <summary>
