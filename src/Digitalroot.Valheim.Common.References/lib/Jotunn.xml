@@ -1672,16 +1672,6 @@
             </summary>
             <param name="zoneVegetation">ZoneVegetation to copy</param>
         </member>
-        <member name="M:Jotunn.DebugUtils.DebugHelper.ZoneSystem_SpawnLocation(ZoneSystem.ZoneLocation,ZoneSystem.SpawnMode)">
-            <summary>
-                Output custom location spawns
-            </summary>
-        </member>
-        <member name="T:Jotunn.DebugUtils.DebugHelper.Debug_isDebugBuild">
-            <summary>
-                Pretend to be a debugBuild :)
-            </summary>
-        </member>
         <member name="T:Jotunn.Entities.ConsoleCommand">
             <summary>
                 A custom console command.
@@ -2673,6 +2663,9 @@
             </summary>
             <param name="sender"></param>
             <param name="package"></param>
+        </member>
+        <member name="M:Jotunn.Entities.CustomRPC.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Jotunn.Entities.CustomStatusEffect">
             <summary>
@@ -5603,6 +5596,36 @@
                 Manager's main init
             </summary>
         </member>
+        <member name="M:Jotunn.Managers.SynchronizationManager.RegisterCustomConfig(BepInEx.Configuration.ConfigFile)">
+            <summary>
+                Registers a non default config file for possible synchronisation with all clients.
+                Entries still need the IsAdminOnly attribute in order to be synchronized.<br />
+                The file path must be saved under the executing BepInEx config folder, see <see cref="P:BepInEx.Paths.ConfigPath" />.
+                This guarantees the same relative path for all clients.
+            </summary>
+            <param name="customFile">the file to synchronize</param>
+            <exception cref="T:System.ArgumentException">The config file is not saved under the BepInEx config folder</exception>
+            <exception cref="T:System.ArgumentException">The config file is already registered</exception>
+            <exception cref="T:System.ArgumentException">The config file is a default mod config and is already implicitly synchronized</exception>
+        </member>
+        <member name="M:Jotunn.Managers.SynchronizationManager.AddInitialSynchronization(Jotunn.Entities.CustomRPC,System.Func{ZNetPeer,ZPackage})">
+            <summary>
+                Add a <see cref="T:Jotunn.Entities.CustomRPC"/> and a method for generating a <see cref="T:ZPackage"/> to the manager.<br />
+                The RPC will be initiated on the server side after login to sync arbitrary data to the connecting client.
+                The package is guaranteed to be received before the client's connection is fully established and the player loads into the world.
+            </summary>
+            <param name="rpc">RPC to be called</param>
+            <param name="packageGenerator">Method generating the ZPackage payload, takes the client peer as its argument</param>
+        </member>
+        <member name="M:Jotunn.Managers.SynchronizationManager.AddInitialSynchronization(Jotunn.Entities.CustomRPC,System.Func{ZPackage})">
+            <summary>
+                Add a <see cref="T:Jotunn.Entities.CustomRPC"/> and a method for generating a <see cref="T:ZPackage"/> to the manager.<br />
+                The RPC will be initiated on the server side after login to sync arbitrary data to the connecting client.
+                The package is guaranteed to be received before the client's connection is fully established and the player loads into the world.
+            </summary>
+            <param name="rpc">RPC to be called</param>
+            <param name="packageGenerator">Method generating the ZPackage payload</param>
+        </member>
         <member name="M:Jotunn.Managers.SynchronizationManager.SceneManager_sceneLoaded(UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)">
             <summary>
                 Init or reset admin and configuration state
@@ -5678,11 +5701,10 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:Jotunn.Managers.SynchronizationManager.FejdStartup_Awake(FejdStartup)">
+        <member name="M:Jotunn.Managers.SynchronizationManager.FejdStartup_Awake">
             <summary>
                 Initial cache the config values of dependent plugins and register ourself to config change events
             </summary>
-            <param name="self"></param>
         </member>
         <member name="M:Jotunn.Managers.SynchronizationManager.Config_ConfigReloaded(System.Object,System.EventArgs)">
             <summary>
