@@ -13,4 +13,4 @@ jobs:
     with:
       repo_name: ${{ github.event.repository.name }}
     secrets:
-      webhook_url: ${{ secrets.VALHEIM_DISCORD_TITANS_WEBHOOK_URL }
+      webhook_url: ${{ secrets.VALHEIM_DISCORD_TITANS_WEBHOOK_URL }}
