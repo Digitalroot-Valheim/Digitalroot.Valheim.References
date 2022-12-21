@@ -4230,11 +4230,10 @@
                 Safely invoke the <see cref="E:Jotunn.Managers.ItemManager.OnKitbashItemsAvailable"/> event
             </summary>
         </member>
-        <member name="M:Jotunn.Managers.ItemManager.InvokeOnItemsRegisteredFejd(ObjectDB)">
+        <member name="M:Jotunn.Managers.ItemManager.InvokeOnItemsRegisteredFejd">
             <summary>
                 Safely invoke the <see cref="E:Jotunn.Managers.ItemManager.OnItemsRegisteredFejd"/> event late in the detour chain
             </summary>
-            <param name="self"></param>
         </member>
         <member name="M:Jotunn.Managers.ItemManager.RegisterCustomData(ObjectDB)">
             <summary>
@@ -4242,11 +4241,10 @@
             </summary>
             <param name="self"></param>
         </member>
-        <member name="M:Jotunn.Managers.ItemManager.InvokeOnItemsRegistered(ObjectDB)">
+        <member name="M:Jotunn.Managers.ItemManager.InvokeOnItemsRegistered">
             <summary>
                 Safely invoke the <see cref="E:Jotunn.Managers.ItemManager.OnItemsRegistered"/> event
             </summary>
-            <param name="self"></param>
         </member>
         <member name="M:Jotunn.Managers.ItemManager.ReloadKnownRecipes(Player)">
             <summary>
