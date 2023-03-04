@@ -678,7 +678,8 @@
         </member>
         <member name="M:Jotunn.Configs.ItemConfig.AddRequirement(Jotunn.Configs.RequirementConfig)">
             <summary>
-                Appends a new <see cref="T:Jotunn.Configs.RequirementConfig"/> to the array of existing ones.
+                Appends a new <see cref="T:Jotunn.Configs.RequirementConfig"/> to the array of existing ones.<br />
+                If the requirement is null or is not valid (has not item name or amount set) nothing will be added.
             </summary>
             <param name="requirementConfig"></param>
         </member>
@@ -1070,7 +1071,8 @@
         </member>
         <member name="M:Jotunn.Configs.PieceConfig.AddRequirement(Jotunn.Configs.RequirementConfig)">
             <summary>
-                Appends a new <see cref="T:Jotunn.Configs.RequirementConfig"/> to the array of existing ones.
+                Appends a new <see cref="T:Jotunn.Configs.RequirementConfig"/> to the array of existing ones.<br />
+                If the requirement is null or is not valid (has not item name or amount set) nothing will be added.
             </summary>
             <param name="requirementConfig"></param>
         </member>
@@ -1191,7 +1193,8 @@
         </member>
         <member name="M:Jotunn.Configs.RecipeConfig.AddRequirement(Jotunn.Configs.RequirementConfig)">
             <summary>
-                Appends a new <see cref="T:Jotunn.Configs.RequirementConfig"/> to the array of existing ones.
+                Appends a new <see cref="T:Jotunn.Configs.RequirementConfig"/> to the array of existing ones.<br />
+                If the requirement is null or is not valid (has not item name or amount set) nothing will be added.
             </summary>
             <param name="requirementConfig"></param>
         </member>
@@ -1237,6 +1240,12 @@
         <member name="M:Jotunn.Configs.RequirementConfig.GetRequirement">
             <summary>
                 Creates a Valheim Piece.Requirement from this config. 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Configs.RequirementConfig.IsValid">
+            <summary>
+                Checks if the requirement has any item and amount set.
             </summary>
             <returns></returns>
         </member>
