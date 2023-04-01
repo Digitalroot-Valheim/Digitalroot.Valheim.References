@@ -8068,11 +8068,6 @@
                 Whether a config is locked for direct writing
             </summary>
         </member>
-        <member name="P:ConfigurationManagerAttributes.LocalValue">
-            <summary>
-                When a config is locked, cache the local value
-            </summary>
-        </member>
         <member name="M:ConfigurationManagerAttributes.SetFromAttributes(System.Object[])">
             <summary>
                 Set config values from an attribute array

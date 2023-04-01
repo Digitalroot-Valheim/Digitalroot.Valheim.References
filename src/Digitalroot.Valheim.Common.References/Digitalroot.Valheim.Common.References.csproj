@@ -21,9 +21,9 @@
 		<Company>Digitalroot Technologies</Company>
 		<Product>Digitalroot Valheim References</Product>
 		<Description>References for Valheim</Description>
-		<PackageReleaseNotes>Update to Valheim 0.212.9</PackageReleaseNotes>
+		<PackageReleaseNotes>Update to Valheim 0.214.300</PackageReleaseNotes>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<Version>0.212.10</Version>
+		<Version>0.214.300</Version>
 		<RestoreAdditionalProjectSources>
 			https://api.nuget.org/v3/index.json;
 			https://nuget.bepinex.dev/v3/index.json;
