@@ -57,13 +57,6 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="UnityEngine.Modules" Version="[2020.3.41]">
-      <PrivateAssets>All</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
   <Target Name="CopyUnityAssemblies" AfterTargets="_CopyFilesMarkedCopyLocal">
     <Message Text="*--------------------------------------------------------------*" Importance="high" />
     <Message Text="CopyUnityAssemblies Called" Importance="high" />
@@ -71,7 +64,7 @@
       <DigitalrootSourceFiles Include="$(TargetDir)**\*.*" />
     </ItemGroup>
     <Message Text="DigitalrootSourceFiles = @(DigitalrootSourceFiles)" Importance="high" />
-    <Copy SourceFiles="@(DigitalrootSourceFiles)" DestinationFiles="@(DigitalrootSourceFiles->'$(ProjectDir)\lib\%(Filename)%(Extension)')" SkipUnchangedFiles="false" OverwriteReadOnlyFiles="true" />
+    <!-- <Copy SourceFiles="@(DigitalrootSourceFiles)" DestinationFiles="@(DigitalrootSourceFiles->'$(ProjectDir)\lib\%(Filename)%(Extension)')" SkipUnchangedFiles="false" OverwriteReadOnlyFiles="true" /> -->
     <Message Text="*--------------------------------------------------------------*" Importance="high" />
   </Target>
 
@@ -83,14 +76,14 @@
     </ItemGroup>
     <Message Text="UnityAssembliesFiles = @(UnityAssembliesFiles)" Importance="high" />
     <Message Text="Deleting files from $(ProjectDir)\lib" Importance="high" />
-    <Delete Files="@(UnityAssembliesFiles)" />
+    <!-- <Delete Files="@(UnityAssembliesFiles)" /> -->
     <Message Text="+--------------------------------------------------------------+" Importance="high" />
   </Target>
  
   <Target Name="PackUnityAssemblies" AfterTargets="AfterBuild">
     <Message Text="/--------------------------------------------------------------\" Importance="high" />
     <Message Text="PackUnityAssemblies Called" Importance="high" />
-    <Exec Command="dotnet pack -c Release --no-restore --no-build --nologo -v n"/>
+    <!-- <Exec Command="dotnet pack -c Release - -no-restore - -no-build - -nologo -v n"/> -->
     <CallTarget Targets="CleanUnityAssemblies" />
     <Message Text="\--------------------------------------------------------------/" Importance="high" />
   </Target>
