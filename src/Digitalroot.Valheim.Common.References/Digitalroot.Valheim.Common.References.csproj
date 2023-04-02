@@ -23,8 +23,6 @@
     <Description>References for Valheim</Description>
     <PackageReleaseNotes>Update to Valheim 0.214.300</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <RestoreLockedMode>true</RestoreLockedMode>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <NoBuild>true</NoBuild>
