@@ -20,5 +20,5 @@ jobs:
     - name: ls
       run: | 
         pwd
-        ls -la
-        ls -la ./valheim
+        ls -lahoR
+        ls -lahoR ~
