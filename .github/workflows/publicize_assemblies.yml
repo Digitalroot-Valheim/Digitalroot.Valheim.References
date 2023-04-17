@@ -16,7 +16,24 @@ jobs:
       uses: CyberAndrii/setup-steamcmd@v1.1.5
     - name: Update app
       run: |
-        steamcmd +force_install_dir /home/runner/.steam/steam/steamapps/common/Valheim +login anonymous +app_update 896660 validate +quit
+        steamcmd +force_install_dir ~/.steam/steam/steamapps/common/Valheim +login anonymous +app_update 896660 validate +quit
     - name: List Files
       run: | 
-        ls -dl /home/runner/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_*.dll
+        ls -dl ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_*.dll
+    - name: Install Publicizer
+      run: | 
+        dotnet tool install -g BepInEx.AssemblyPublicizer.Cli
+    - name: Publicize
+      run: | 
+        assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_googleanalytics.dll --strip -o ~/publicized_assemblies
+        assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_guiutils.dll --strip -o ~/publicized_assemblies
+        assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_lux.dll --strip -o ~/publicized_assemblies
+        assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_postprocessing.dll --strip -o ~/publicized_assemblies
+        assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_simplemeshcombine.dll --strip -o ~/publicized_assemblies
+        assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_steamworks.dll.dll --strip -o ~/publicized_assemblies
+        assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_sunshafts.dll --strip -o ~/publicized_assemblies
+        assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_utils.dll --strip -o ~/publicized_assemblies
+        assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_valheim.dll --strip -o ~/publicized_assemblies
+    - name: List Publicized Files
+      run: | 
+        ls -dl ~/publicized_assemblies
