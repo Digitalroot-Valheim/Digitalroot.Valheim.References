@@ -2,12 +2,12 @@ name: Release
 
 on:
   workflow_dispatch:
-    branches: [ main ] # Default release branch
+
   push:
     branches: [ main ] # Default release branch
-    paths:
-      - 'src/**'   
-      - '.github/workflows/**' 
+    paths-ignore:
+      - '.github/**'
+      - 'docs/**'
 
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
