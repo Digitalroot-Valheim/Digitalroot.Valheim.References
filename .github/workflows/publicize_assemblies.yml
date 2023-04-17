@@ -30,7 +30,7 @@ jobs:
         assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_lux.dll --strip -o ~/publicized_assemblies
         assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_postprocessing.dll --strip -o ~/publicized_assemblies
         assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_simplemeshcombine.dll --strip -o ~/publicized_assemblies
-        assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_steamworks.dll.dll --strip -o ~/publicized_assemblies
+        assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_steamworks.dll --strip -o ~/publicized_assemblies
         assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_sunshafts.dll --strip -o ~/publicized_assemblies
         assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_utils.dll --strip -o ~/publicized_assemblies
         assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_valheim.dll --strip -o ~/publicized_assemblies
