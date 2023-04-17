@@ -1,1 +1,18 @@
+name: Release
 
+on:
+  workflow_dispatch:
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  discord:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+    - name: Setup steamcmd
+      uses: CyberAndrii/setup-steamcmd@v1.1.5
+    - name: Update app
+      run: steamcmd +login anonymous +app_update 896660 validate +quit
