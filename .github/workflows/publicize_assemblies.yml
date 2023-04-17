@@ -19,6 +19,7 @@ jobs:
         steamcmd +force_install_dir ./valheim +login anonymous +app_update 896660 validate +quit
     - name: ls
       run: | 
-        pwd
-        ls -lahoR
-        ls -lahoR ~
+        echo "ls -lahoR ~/.steam"
+        ls -lahoR ~/.steam
+        echo "ls -lahoR ~/Steam"
+        ls -lahoR ~/Steam
