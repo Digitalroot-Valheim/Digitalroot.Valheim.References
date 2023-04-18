@@ -39,6 +39,12 @@ jobs:
         pwd
         echo "ls -dlR ~/publicized_assemblies"
         ls -laR ~/publicized_assemblies
-        echo "ls -laR ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/"
-        ls -laR ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: List Repo Files
+      run: | 
+        pwd
+        echo "ls -dlR ./"
+        ls -laR ./
+      
         
