@@ -51,4 +51,15 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v4        
   call-workflow-nuget-release:
     needs: [install]
-    uses: Digitalroot-Valheim/Digitalroot.Valheim.Common.References/.github/workflows/release.yml@main
+    uses: Digitalroot-Valheim/.github/.github/workflows/nuget.release.yml@main
+    secrets:
+      aws-access-key-id: ${{ secrets.NUGET_S3_REPO_KEY_ID }}
+      aws-secret-access-key: ${{ secrets.NUGET_S3_REPO_KEY_SECRET }}
+      nuget-org-key: ${{ secrets.NUGET_ORG_PAT }}
+    with:
+      sln-file-name: Digitalroot.Valheim.Common.References
+      proj-file-name: Digitalroot.Valheim.Common.References
+      #force-assembly-version: true
+      nuget-gh-upload: true
+      nuget-s3-upload: true
+      nuget-org-upload: true
