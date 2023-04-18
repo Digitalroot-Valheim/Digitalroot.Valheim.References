@@ -10,7 +10,9 @@ env:
 jobs:
   Install:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
+    permissions:
+      contents: write    
     steps:
     - name: Setup steamcmd
       uses: CyberAndrii/setup-steamcmd@v1.1.5
@@ -41,10 +43,14 @@ jobs:
         ls -laR ~/publicized_assemblies
     - name: Checkout
       uses: actions/checkout@v3
-    - name: List Repo Files
+    - name: Update Repo Files
       run: | 
         pwd
         echo "ls -dlR ./"
         ls -laR ./
-      
+        cp --verbose ~/publicized_assemblies/assembly_*.dll ./src/Digitalroot.Valheim.Common.References/lib/
+    - name: Commit
+      uses: stefanzweifel/git-auto-commit-action@v4        
+  call-workflow-nuget-release:
+    uses: Digitalroot-Valheim/Digitalroot.Valheim.Common.References/.github/workflows/release.yml@main
         
