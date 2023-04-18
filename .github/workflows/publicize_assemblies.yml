@@ -8,7 +8,8 @@ env:
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
 jobs:
-  Install:
+  install:
+    name: Install
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -52,5 +53,5 @@ jobs:
     - name: Commit
       uses: stefanzweifel/git-auto-commit-action@v4        
   call-workflow-nuget-release:
+    needs: [install]
     uses: Digitalroot-Valheim/Digitalroot.Valheim.Common.References/.github/workflows/release.yml@main
-        
