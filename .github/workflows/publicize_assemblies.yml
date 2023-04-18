@@ -36,4 +36,9 @@ jobs:
         assembly-publicizer ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/assembly_valheim.dll --strip -o ~/publicized_assemblies
     - name: List Publicized Files
       run: | 
-        ls -dlR ~/publicized_assemblies
+        pwd
+        echo "ls -dlR ~/publicized_assemblies"
+        ls -laR ~/publicized_assemblies
+        echo "ls -laR ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/"
+        ls -laR ~/.steam/steam/steamapps/common/Valheim/valheim_server_Data/Managed/
+        
