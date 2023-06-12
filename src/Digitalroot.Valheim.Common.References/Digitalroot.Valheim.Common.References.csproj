@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>Digitalroot.Valheim.Common.References</AssemblyName>
     <TargetFrameworks>net462</TargetFrameworks>
-    <LangVersion>9</LangVersion>
+    <LangVersion>10</LangVersion>
     <PackageId>Digitalroot.Valheim.Common.References</PackageId>
     <RootNamespace>Digitalroot.Valheim.Common.References</RootNamespace>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -21,12 +21,12 @@
     <Company>Digitalroot Technologies</Company>
     <Product>Digitalroot Valheim References</Product>
     <Description>References for Valheim</Description>
-    <PackageReleaseNotes>Update to Valheim 0.214.300</PackageReleaseNotes>
+    <PackageReleaseNotes>Update to Valheim 0.216.9</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <NoBuild>true</NoBuild>
-    <Version>0.214.302</Version>
+    <Version>0.216.901</Version>
     <RestoreAdditionalProjectSources>
       https://api.nuget.org/v3/index.json;
       https://nuget.bepinex.dev/v3/index.json;
