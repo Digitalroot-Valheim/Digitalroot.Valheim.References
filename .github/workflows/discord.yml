@@ -8,9 +8,16 @@ on:
       - 'docs/**'
 
 jobs:
-  discord:
+  discord-titans:
     uses: Digitalroot-Valheim/.github/.github/workflows/discord.yml@main
     with:
       repo_name: ${{ github.event.repository.name }}
     secrets:
       webhook_url: ${{ secrets.VALHEIM_DISCORD_TITANS_WEBHOOK_URL }}
+
+  discord-vl:
+    uses: Digitalroot-Valheim/.github/.github/workflows/discord.yml@main
+    with:
+      repo_name: ${{ github.event.repository.name }}
+    secrets:
+      webhook_url: ${{ secrets.VALHEIM_DISCORD_VL_WEBHOOK_URL }}
