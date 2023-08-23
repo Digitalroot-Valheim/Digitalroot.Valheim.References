@@ -48,7 +48,9 @@ jobs:
       run: | 
         cp --verbose ~/publicized_assemblies/assembly_*.dll ./src/Digitalroot.Valheim.Common.References/lib/
     - name: Commit
-      uses: stefanzweifel/git-auto-commit-action@v4        
+      uses: stefanzweifel/git-auto-commit-action@v4
+
+
   call-workflow-nuget-release:
     needs: [install]
     uses: Digitalroot-Valheim/.github/.github/workflows/nuget.release.yml@main
