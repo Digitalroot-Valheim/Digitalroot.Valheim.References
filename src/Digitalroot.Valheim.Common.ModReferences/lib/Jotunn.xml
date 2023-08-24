@@ -4051,6 +4051,20 @@
                 Initialize the manager
             </summary>
         </member>
+        <member name="M:Jotunn.Managers.GUIManager.UnlockMouseTranspiler(System.Collections.Generic.IEnumerable{HarmonyLib.CodeInstruction})">
+            <summary>
+                Allows for free mouse movement when the GUIManager blocks the input
+            </summary>
+            <param name="instructions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Managers.GUIManager.BlockUseTranspiler(System.Collections.Generic.IEnumerable{HarmonyLib.CodeInstruction})">
+            <summary>
+                Prevents hiding the InventoryGui on an E press or similar when the GUIManager blocks the input
+            </summary>
+            <param name="instructions"></param>
+            <returns></returns>
+        </member>
         <member name="M:Jotunn.Managers.GUIManager.InitialLoad(UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)">
             <summary>
                 Load GUI assets on first start
@@ -5771,7 +5785,7 @@
                 Only one asset can be associated with a name, this ties to find the best match if there is already a cached one present.
             </summary>
             <param name="map"></param>
-            <param name="unityObject"></param>
+            <param name="newObject"></param>
             <param name="name"></param>
             <returns></returns>
         </member>
