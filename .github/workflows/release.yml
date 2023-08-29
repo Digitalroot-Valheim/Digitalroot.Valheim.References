@@ -2,13 +2,14 @@ name: Release
 
 on:
   workflow_dispatch:
-  workflow_call:
 
   push:
     branches: [ main ] # Default release branch
     paths-ignore:
       - '.github/**'
       - 'docs/**'
+      - '**/.ts/**'
+      - '**/.nx/**'
 
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
@@ -22,22 +23,37 @@ jobs:
       aws-secret-access-key: ${{ secrets.NUGET_S3_REPO_KEY_SECRET }}
       nuget-org-key: ${{ secrets.NUGET_ORG_PAT }}
     with:
-      sln-file-name: Digitalroot.Valheim.Common.References
-      proj-file-name: Digitalroot.Valheim.Common.References
+      sln-file-name: Digitalroot.Valheim.References
+      proj-file-name: Digitalroot.Valheim.References
       force-assembly-version: true
       nuget-gh-upload: true
       nuget-s3-upload: true
       nuget-org-upload: true
 
-  call-workflow-nuget-release-mod-references:
+  call-workflow-nuget-release-mod-EpicLoot-references:
     uses: Digitalroot-Valheim/.github/.github/workflows/nuget.release.yml@main
     secrets:
       aws-access-key-id: ${{ secrets.NUGET_S3_REPO_KEY_ID }}
       aws-secret-access-key: ${{ secrets.NUGET_S3_REPO_KEY_SECRET }}
       nuget-org-key: ${{ secrets.NUGET_ORG_PAT }}
     with:
-      sln-file-name: Digitalroot.Valheim.Common.References
-      proj-file-name: Digitalroot.Valheim.Common.ModReferences
+      sln-file-name: Digitalroot.Valheim.References
+      proj-file-name: Digitalroot.Valheim.References.EpicLoot
+      force-assembly-version: true
+      nuget-gh-upload: true
+      nuget-s3-upload: true
+      nuget-org-upload: true
+      create-github-release: false
+
+  call-workflow-nuget-release-mod-JvL-references:
+    uses: Digitalroot-Valheim/.github/.github/workflows/nuget.release.yml@main
+    secrets:
+      aws-access-key-id: ${{ secrets.NUGET_S3_REPO_KEY_ID }}
+      aws-secret-access-key: ${{ secrets.NUGET_S3_REPO_KEY_SECRET }}
+      nuget-org-key: ${{ secrets.NUGET_ORG_PAT }}
+    with:
+      sln-file-name: Digitalroot.Valheim.References
+      proj-file-name: Digitalroot.Valheim.References.JvL
       force-assembly-version: true
       nuget-gh-upload: true
       nuget-s3-upload: true

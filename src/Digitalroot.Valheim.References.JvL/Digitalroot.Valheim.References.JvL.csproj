@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.Build.NoTargets/1.0.26">
+
+  <PropertyGroup>
+    <AssemblyName>Digitalroot.Valheim.References.JvL</AssemblyName>
+    <TargetFrameworks>net462</TargetFrameworks>
+    <LangVersion>10</LangVersion>
+    <PackageId>Digitalroot.Valheim.References.JvL</PackageId>
+    <RootNamespace>Digitalroot.Valheim.References.JvL</RootNamespace>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
+    <Copyright>Copyright © Digitalroot Technologies 2021 - 2023</Copyright>
+    <PackageProjectUrl>https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.References</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.References</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageIcon>ValheimRcon_black.png</PackageIcon>
+    <PackageIconUrl />
+    <PackageTags>valheim, digitalroot, mod references, JvL, Jötunn, Jotunn</PackageTags>
+    <Authors>Digitalroot</Authors>
+    <Company>Digitalroot Technologies</Company>
+    <Product>Digitalroot Valheim Jotunn (JvL) mod References</Product>
+    <Description>References for Valheim mod Jotunn (JvL)</Description>
+    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <NoBuild>true</NoBuild>
+    <Version>2.12.7</Version>
+    <RestoreAdditionalProjectSources>
+      https://api.nuget.org/v3/index.json;
+      https://nuget.bepinex.dev/v3/index.json;
+      https://digitalroot-valheim-nuget.s3.us-west-2.amazonaws.com/index.json
+    </RestoreAdditionalProjectSources>
+    <ApplicationIcon>ValheimRcon_black.ico</ApplicationIcon>
+    <IsPublishable>False</IsPublishable>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net462|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\ico\ValheimRcon_black.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="lib\*.*">
+      <Pack>True</Pack>
+      <PackagePath>ref\net462</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
