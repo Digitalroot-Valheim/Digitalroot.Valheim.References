@@ -40,9 +40,9 @@ jobs:
       sln-file-name: Digitalroot.Valheim.References
       proj-file-name: Digitalroot.Valheim.References.EpicLoot
       force-assembly-version: true
-      nuget-gh-upload: true
-      nuget-s3-upload: true
-      nuget-org-upload: true
+      nuget-gh-upload: false
+      nuget-s3-upload: false
+      nuget-org-upload: false
       create-github-release: false
 
   call-workflow-nuget-release-mod-JvL-references:
@@ -55,7 +55,7 @@ jobs:
       sln-file-name: Digitalroot.Valheim.References
       proj-file-name: Digitalroot.Valheim.References.JvL
       force-assembly-version: true
-      nuget-gh-upload: true
-      nuget-s3-upload: true
-      nuget-org-upload: true
+      nuget-gh-upload: false
+      nuget-s3-upload: false
+      nuget-org-upload: false
       create-github-release: false
