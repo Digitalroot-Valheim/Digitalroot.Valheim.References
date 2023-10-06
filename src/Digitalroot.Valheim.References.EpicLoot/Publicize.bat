@@ -19,4 +19,6 @@ call assembly-publicizer "%ValheimInstallPath:"=%\EpicLoot.dll" %OPTIONS% -o %Pu
 
 ENDLOCAL
 
+PAUSE
+
 EXIT

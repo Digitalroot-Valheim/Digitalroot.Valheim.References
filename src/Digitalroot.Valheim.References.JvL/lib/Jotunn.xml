@@ -826,6 +826,16 @@
                 The minimum required level for the crafting station. Defaults to <c>1</c>.
             </summary>
         </member>
+        <member name="P:Jotunn.Configs.ItemConfig.RequireOnlyOneIngredient">
+            <summary>
+                Whether this recipe requires only one of the crafting requirements to be crafted. Defaults to <c>false</c>.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.ItemConfig.QualityResultAmountMultiplier">
+            <summary>
+                Multiplier for the amount of items created by the recipe based on the quality of the crafting materials. Defaults to <c>1</c>.
+            </summary>
+        </member>
         <member name="P:Jotunn.Configs.ItemConfig.Icons">
             <summary>
                 Icons for this item. If more than one icon is added, this item automatically has variants.
@@ -1461,6 +1471,16 @@
         <member name="P:Jotunn.Configs.RecipeConfig.MinStationLevel">
             <summary>
                 The minimum required level for the crafting station. Defaults to <c>1</c>.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.RecipeConfig.RequireOnlyOneIngredient">
+            <summary>
+                Whether this recipe requires only one of the crafting requirements to be crafted. Defaults to <c>false</c>.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.RecipeConfig.QualityResultAmountMultiplier">
+            <summary>
+                Multiplier for the amount of items created by the recipe based on the quality of the crafting materials. Defaults to <c>1</c>.
             </summary>
         </member>
         <member name="P:Jotunn.Configs.RecipeConfig.Requirements">
@@ -2148,6 +2168,12 @@
             <param name="fixReference">If true references for <see cref="T:Jotunn.Entities.Mock`1"/> objects get resolved at runtime by Jötunn.</param>
             <param name="config">The <see cref="T:Jotunn.Configs.ClutterConfig"/> for this custom clutter.</param>
         </member>
+        <member name="M:Jotunn.Entities.CustomClutter.IsValid">
+            <summary>
+                Checks if a custom clutter is valid (i.e. has a prefab).
+            </summary>
+            <returns>true if all criteria is met</returns>
+        </member>
         <member name="M:Jotunn.Entities.CustomClutter.ToString">
             <inheritdoc/>
         </member>
@@ -2205,6 +2231,16 @@
             </summary>
             <param name="name">The new name of the creature after cloning.</param>
             <param name="basePrefabName">The name of the base prefab the custom creature is cloned from.</param>
+            <param name="creatureConfig">The <see cref="T:Jotunn.Configs.CreatureConfig"/> for this custom creature.</param>
+        </member>
+        <member name="M:Jotunn.Entities.CustomCreature.#ctor(UnityEngine.AssetBundle,System.String,System.Boolean,Jotunn.Configs.CreatureConfig)">
+            <summary>
+                Custom creature from a prefab loaded from an <see cref="T:UnityEngine.AssetBundle"/> with a <see cref="T:Jotunn.Configs.PieceConfig"/> attached.<br />
+                The members and references from the <see cref="T:Jotunn.Configs.PieceConfig"/> will be referenced by Jötunn at runtime.
+            </summary>
+            <param name="assetBundle">A preloaded <see cref="T:UnityEngine.AssetBundle"/></param>
+            <param name="assetName">Name of the prefab in the bundle.</param>
+            <param name="fixReference">If true references for <see cref="T:Jotunn.Entities.Mock`1"/> objects get resolved at runtime by Jötunn.</param>
             <param name="creatureConfig">The <see cref="T:Jotunn.Configs.CreatureConfig"/> for this custom creature.</param>
         </member>
         <member name="M:Jotunn.Entities.CustomCreature.IsValid">
@@ -3162,6 +3198,12 @@
             <param name="prefabName">Name of the prefab to test.</param>
             <returns>true if the prefab is added as a custom vegetation to the <see cref="T:Jotunn.Managers.ZoneManager"/>.</returns>
         </member>
+        <member name="M:Jotunn.Entities.CustomVegetation.IsValid">
+            <summary>
+                Checks if a custom vegetation is valid (i.e. has a prefab, an <see cref="T:ItemDrop"/> and an icon, if it should be craftable).
+            </summary>
+            <returns>true if all criteria is met</returns>
+        </member>
         <member name="M:Jotunn.Entities.CustomVegetation.ToString">
             <inheritdoc/>
         </member>
@@ -3594,11 +3636,6 @@
         <member name="F:Jotunn.Logger.ShowDate">
             <summary>
                 Add DateTime to the log output
-            </summary>
-        </member>
-        <member name="M:Jotunn.Logger.Init">
-            <summary>
-                Singleton init
             </summary>
         </member>
         <member name="M:Jotunn.Logger.Destroy">
@@ -4432,7 +4469,7 @@
                 Translate a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its <see cref="T:UnityEngine.KeyCode"/> value
             </summary>
         </member>
-        <member name="M:Jotunn.Managers.InputManager.GetGamepadAxis(Jotunn.Managers.InputManager.GamepadButton)">
+        <member name="M:Jotunn.Managers.InputManager.GetGamepadInput(Jotunn.Managers.InputManager.GamepadButton)">
             <summary>
                 Translate a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its axis string value
             </summary>
@@ -4440,6 +4477,11 @@
         <member name="M:Jotunn.Managers.InputManager.GetGamepadString(Jotunn.Managers.InputManager.GamepadButton)">
             <summary>
                 Translate a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its printable string value
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.InputManager.GetGamepadButton(GamepadInput)">
+            <summary>
+                Translate an axis string to its <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> value
             </summary>
         </member>
         <member name="M:Jotunn.Managers.InputManager.GetGamepadButton(System.String)">
@@ -5650,6 +5692,11 @@
                 Creates the prefab container and registers all hooks.
             </summary>
         </member>
+        <member name="M:Jotunn.Managers.PrefabManager.Activate">
+            <summary>
+                Makes sure the PrefabManager initializes. Only needed if timing is important.
+            </summary>
+        </member>
         <member name="M:Jotunn.Managers.PrefabManager.AddPrefab(UnityEngine.GameObject,BepInEx.BepInPlugin)">
             <summary>
                 Add a custom prefab to the manager with known source mod metadata. Don't fix references.
@@ -6425,6 +6472,16 @@
             </summary>
             <param name="gameObject">Instantiated and hierarchy disabled location prefab</param>
         </member>
+        <member name="M:Jotunn.Managers.ZoneManager.CreateLocationContainer(UnityEngine.AssetBundle,System.String)">
+            <summary>
+                Loads and spawns a GameObject from an AssetBundle as a location container.<br />
+                The copy is disabled, so any Components in instantiated child GameObjects will not start their lifecycle.<br />
+                Use this if you plan to alter your location prefab in code after importing it. <br />
+                Don't create a separate container if you won't alter the prefab afterwards as it creates a new instance for the container.
+            </summary>
+            <param name="assetBundle">A preloaded <see cref="T:UnityEngine.AssetBundle"/></param>
+            <param name="assetName">Name of the prefab in the bundle to be instantiated as the location cotainer</param>
+        </member>
         <member name="M:Jotunn.Managers.ZoneManager.CreateLocationContainer(UnityEngine.GameObject,System.Boolean)">
             <summary>
                 Create a copy that is disabled, so any Components in instantiated GameObjects will not start their lifecycle     
@@ -7039,10 +7096,17 @@
         </member>
         <member name="M:Jotunn.Utils.AssetUtils.LoadTextFromResources(System.String,System.Reflection.Assembly)">
             <summary>
-                Load an assembly-embedded file as a char string />
+                Load an assembly-embedded file as a <see cref="T:System.String" />. Use this if the automatic detection of the assembly fails.
             </summary>
             <param name="fileName">Name of the file. Folders are point-seperated e.g. folder/file.json becomes folder.file.json</param>
             <param name="resourceAssembly">Executing assembly</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Utils.AssetUtils.LoadTextFromResources(System.String)">
+            <summary>
+                Load an assembly-embedded file as a <see cref="T:System.String" />. The calling assembly is automatically detected.
+            </summary>
+            <param name="fileName">Name of the file. Folders are point-seperated e.g. folder/file.json becomes folder.file.json</param>
             <returns></returns>
         </member>
         <member name="M:Jotunn.Utils.AssetUtils.LoadText(System.String)">

@@ -22,4 +22,6 @@ robocopy %ValheimInstallPath% %PublicizePath% Jotunn.* /R:3 /W:3 /XF "%ValheimIn
 
 ENDLOCAL
 
+PAUSE
+
 EXIT

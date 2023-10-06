@@ -27,4 +27,6 @@ call assembly-publicizer "%ValheimInstallPath:"=%\assembly_valheim.dll" %OPTIONS
 
 ENDLOCAL
 
+PAUSE
+
 EXIT
