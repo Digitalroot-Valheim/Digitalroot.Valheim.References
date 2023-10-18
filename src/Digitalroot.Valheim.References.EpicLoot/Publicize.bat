@@ -3,7 +3,7 @@ SET DOTNET_SKIP_FIRST_TIME_EXPERIENCE = true
 SET DOTNET_CLI_TELEMETRY_OPTOUT = true
 
 echo == Installing BepInEx.AssemblyPublicizer.Cli == 
-dotnet tool update -g BepInEx.AssemblyPublicizer.Cli
+REM dotnet tool update -g BepInEx.AssemblyPublicizer.Cli
 
 SETLOCAL
 
