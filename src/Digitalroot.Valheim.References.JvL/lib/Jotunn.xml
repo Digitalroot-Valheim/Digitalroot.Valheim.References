@@ -3753,11 +3753,6 @@
                 The BepInEx plugin Mod GUID being used (com.jotunn.jotunn).
             </summary>
         </member>
-        <member name="M:Jotunn.Main.InitializePatches">
-            <summary>
-                Invoke patch initialization methods for all loaded mods.
-            </summary>
-        </member>
         <member name="T:Jotunn.Managers.CommandManager">
             <summary>
                 Manager for handling custom console and chat commands.
@@ -4095,12 +4090,10 @@
             <param name="instructions"></param>
             <returns></returns>
         </member>
-        <member name="M:Jotunn.Managers.GUIManager.InitialLoad(UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)">
+        <member name="M:Jotunn.Managers.GUIManager.InitializeAssets">
             <summary>
                 Load GUI assets on first start
             </summary>
-            <param name="scene"></param>
-            <param name="loadMode"></param>
         </member>
         <member name="M:Jotunn.Managers.GUIManager.CreateCustomGUI(UnityEngine.Transform)">
             <summary>
@@ -5839,6 +5832,11 @@
                 Rotation of the prefab that will result in an isometric view
             </summary>
         </member>
+        <member name="F:Jotunn.Managers.RenderManager.cacheRevision">
+            <summary>
+                Appended string to file names to force a cache recreation, if changed
+            </summary>
+        </member>
         <member name="P:Jotunn.Managers.RenderManager.Instance">
             <summary>
                 Singleton instance
@@ -5851,7 +5849,7 @@
         </member>
         <member name="F:Jotunn.Managers.RenderManager.Layer">
             <summary>
-                Unused Layer in Unity
+                Arbitrary unused Layer in the game
             </summary>
         </member>
         <member name="M:Jotunn.Managers.RenderManager.Jotunn#IManager#Init">
@@ -7970,6 +7968,11 @@
         <member name="P:Jotunn.Utils.ModRegistry.ModInfo.Translations">
             <summary>
                 Custom commands added by that mod
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.PatchInit.InitializePatches">
+            <summary>
+                Invoke patch initialization methods for all loaded mods.
             </summary>
         </member>
         <member name="T:Jotunn.Utils.PatchInitAttribute">
