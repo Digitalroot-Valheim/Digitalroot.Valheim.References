@@ -29,6 +29,7 @@ jobs:
       nuget-gh-upload: true
       nuget-s3-upload: true
       nuget-org-upload: true
+      skip-build: true
 
   call-workflow-nuget-release-mod-EpicLoot-references:
     uses: Digitalroot-Valheim/.github/.github/workflows/nuget.release.yml@main
@@ -44,6 +45,7 @@ jobs:
       nuget-s3-upload: false
       nuget-org-upload: false
       create-github-release: false
+      skip-build: true
 
   call-workflow-nuget-release-mod-JvL-references:
     uses: Digitalroot-Valheim/.github/.github/workflows/nuget.release.yml@main
@@ -59,6 +61,7 @@ jobs:
       nuget-s3-upload: false
       nuget-org-upload: false
       create-github-release: false
+      skip-build: true
 
   call-workflow-nuget-release-unity-references:
     uses: Digitalroot-Valheim/.github/.github/workflows/nuget.release.yml@main
@@ -74,3 +77,4 @@ jobs:
       nuget-s3-upload: false
       nuget-org-upload: false
       create-github-release: false
+      skip-build: true
