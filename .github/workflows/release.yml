@@ -59,3 +59,18 @@ jobs:
       nuget-s3-upload: false
       nuget-org-upload: false
       create-github-release: false
+
+  call-workflow-nuget-release-unity-references:
+    uses: Digitalroot-Valheim/.github/.github/workflows/nuget.release.yml@main
+    secrets:
+      aws-access-key-id: ${{ secrets.NUGET_S3_REPO_KEY_ID }}
+      aws-secret-access-key: ${{ secrets.NUGET_S3_REPO_KEY_SECRET }}
+      nuget-org-key: ${{ secrets.NUGET_ORG_PAT }}
+    with:
+      sln-file-name: Digitalroot.Valheim.References
+      proj-file-name: Digitalroot.References.Unity
+      force-assembly-version: true
+      nuget-gh-upload: false
+      nuget-s3-upload: false
+      nuget-org-upload: false
+      create-github-release: false

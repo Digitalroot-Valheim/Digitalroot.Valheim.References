@@ -32,7 +32,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Digitalroot.Valheim.Referen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Digitalroot.Valheim.References.JvL", "Digitalroot.Valheim.References.JvL\Digitalroot.Valheim.References.JvL.csproj", "{8998BBD3-BBFA-42ED-8B36-26F88DC31908}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digitalroot.Valheim.References.Unity", "Digitalroot.Valheim.References.Unity\Digitalroot.Valheim.References.Unity.csproj", "{F4E4A873-22C9-400F-9339-256690D2ABC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Digitalroot.References.Unity", "Digitalroot.References.Unity\Digitalroot.References.Unity.csproj", "{DDFC0528-F61C-4AB9-98A6-2D310ED9E6BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,10 +56,10 @@ Global
 		{8998BBD3-BBFA-42ED-8B36-26F88DC31908}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8998BBD3-BBFA-42ED-8B36-26F88DC31908}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8998BBD3-BBFA-42ED-8B36-26F88DC31908}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F4E4A873-22C9-400F-9339-256690D2ABC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F4E4A873-22C9-400F-9339-256690D2ABC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F4E4A873-22C9-400F-9339-256690D2ABC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F4E4A873-22C9-400F-9339-256690D2ABC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDFC0528-F61C-4AB9-98A6-2D310ED9E6BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDFC0528-F61C-4AB9-98A6-2D310ED9E6BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDFC0528-F61C-4AB9-98A6-2D310ED9E6BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDFC0528-F61C-4AB9-98A6-2D310ED9E6BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -26,7 +26,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <NoBuild>true</NoBuild>
-    <Version>2022.3.12-RC01</Version>
+    <Version>2022.3.12</Version>
     <RestoreAdditionalProjectSources>
       https://api.nuget.org/v3/index.json;
       https://nuget.bepinex.dev/v3/index.json;
