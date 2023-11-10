@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Digitalroot.References.Unity</AssemblyName>
+    <TargetFrameworks>net48</TargetFrameworks>
+    <LangVersion>10</LangVersion>
+    <PackageId>Digitalroot.References.Unity</PackageId>
+    <RootNamespace>Digitalroot.References.Unity</RootNamespace>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
+    <Copyright>Copyright © Digitalroot Technologies 2021 - 2024</Copyright>
+    <PackageProjectUrl>https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.References</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.References</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageIcon>ValheimRcon_black.png</PackageIcon>
+    <PackageIconUrl />
+    <PackageTags>valheim, digitalroot, references, Unity</PackageTags>
+    <Authors>Digitalroot</Authors>
+    <Company>Digitalroot Technologies</Company>
+    <Product>Digitalroot Unity References</Product>
+    <Description>References for Valheim's version of Unity</Description>
+    <PackageReleaseNotes>Initial Release Unity 2022.3.12</PackageReleaseNotes>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <NoBuild>true</NoBuild>
+    <Version>2022.3.12-RC01</Version>
+    <RestoreAdditionalProjectSources>
+      https://api.nuget.org/v3/index.json;
+      https://nuget.bepinex.dev/v3/index.json;
+      https://digitalroot-valheim-nuget.s3.us-west-2.amazonaws.com/index.json
+    </RestoreAdditionalProjectSources>
+    <ApplicationIcon>ValheimRcon_black.ico</ApplicationIcon>
+    <IsPublishable>False</IsPublishable>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net48|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\ico\ValheimRcon_black.png" Link="ValheimRcon_black.png">
+      <PackagePath></PackagePath>
+      <Pack>True</Pack>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="lib\*.*">
+      <Pack>True</Pack>
+      <PackagePath>ref\net48</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
