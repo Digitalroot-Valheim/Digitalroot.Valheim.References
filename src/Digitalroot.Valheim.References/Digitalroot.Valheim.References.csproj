@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <AssemblyName>Digitalroot.Valheim.References</AssemblyName>
-    <TargetFrameworks>net462</TargetFrameworks>
+    <TargetFrameworks>net48</TargetFrameworks>
     <LangVersion>10</LangVersion>
     <PackageId>Digitalroot.Valheim.Common.References</PackageId>
     <RootNamespace>Digitalroot.Valheim.References</RootNamespace>
@@ -10,7 +10,7 @@
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
-    <Copyright>Copyright © Digitalroot Technologies 2021 - 2023</Copyright>
+    <Copyright>Copyright © Digitalroot Technologies 2021 - 2024</Copyright>
     <PackageProjectUrl>https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.References</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Digitalroot-Valheim/Digitalroot.Valheim.References</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -21,12 +21,12 @@
     <Company>Digitalroot Technologies</Company>
     <Product>Digitalroot Valheim References</Product>
     <Description>References for Valheim</Description>
-    <PackageReleaseNotes>Update to Valheim 0.217.25</PackageReleaseNotes>
+    <PackageReleaseNotes>Update to Valheim 0.217.29</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <NoBuild>true</NoBuild>
-    <Version>0.217.25</Version>
+    <Version>0.217.29-RC01</Version>
     <RestoreAdditionalProjectSources>
       https://api.nuget.org/v3/index.json;
       https://nuget.bepinex.dev/v3/index.json;
@@ -37,7 +37,7 @@
     <DebugType>none</DebugType>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net462|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net48|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
@@ -53,7 +53,7 @@
   <ItemGroup>
     <None Include="lib\*.dll">
       <Pack>True</Pack>
-      <PackagePath>ref\net462</PackagePath>
+      <PackagePath>ref\net48</PackagePath>
     </None>
   </ItemGroup>
 
