@@ -46,7 +46,7 @@ jobs:
       nuget-s3-upload: false
       nuget-org-upload: false
       create-github-release: false
-      skip-build: true
+      skip-build: false
       skip-unit-tests: true
 
   call-workflow-nuget-release-mod-JvL-references:
