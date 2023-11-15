@@ -29,6 +29,7 @@ jobs:
       nuget-gh-upload: true
       nuget-s3-upload: true
       nuget-org-upload: true
+      create-github-release: false
       skip-build: false
       skip-unit-tests: true
 
@@ -63,7 +64,7 @@ jobs:
       nuget-s3-upload: false
       nuget-org-upload: false
       create-github-release: false
-      skip-build: true
+      skip-build: false
       skip-unit-tests: true
 
   call-workflow-nuget-release-unity-references:
@@ -80,5 +81,5 @@ jobs:
       nuget-s3-upload: false
       nuget-org-upload: false
       create-github-release: false
-      skip-build: true
+      skip-build: false
       skip-unit-tests: true
