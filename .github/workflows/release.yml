@@ -31,7 +31,7 @@ jobs:
       nuget-gh-upload: true
       nuget-s3-upload: true
       nuget-org-upload: true
-      create-github-release: true
+      create-github-release: false
       skip-build: false
       skip-unit-tests: true
 
