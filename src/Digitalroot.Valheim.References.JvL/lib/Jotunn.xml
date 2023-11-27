@@ -3405,6 +3405,57 @@
             <typeparam name="T"></typeparam>
             <returns></returns>
         </member>
+        <member name="M:Jotunn.ExposedGameObjectExtension.HasAnyComponent(UnityEngine.GameObject,System.Type[])">
+            <summary>
+                Check if GameObject has any of the specified components.
+            </summary>
+            <param name="gameObject"></param>
+            <param name="components"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.ExposedGameObjectExtension.HasAnyComponent(UnityEngine.GameObject,System.String[])">
+            <summary>
+                Check if GameObject has any of the specified components.
+            </summary>
+            <param name="gameObject"></param>
+            <param name="componentNames"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.ExposedGameObjectExtension.HasAllComponents(UnityEngine.GameObject,System.String[])">
+            <summary>
+                Check if GameObject has all of the specified components.
+            </summary>
+            <param name="gameObject"></param>
+            <param name="componentNames"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.ExposedGameObjectExtension.HasAllComponents(UnityEngine.GameObject,System.Type[])">
+            <summary>
+                Check if GameObject has all of the specified components.
+            </summary>
+            <param name="gameObject"></param>
+            <param name="components"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.ExposedGameObjectExtension.HasAnyComponentInChildren(UnityEngine.GameObject,System.Boolean,System.Type[])">
+            <summary>
+                Check if GameObject or any of it's children
+                have any of the specified components.
+            </summary>
+            <param name="gameObject"></param>
+            <param name="includeInactive"></param>
+            <param name="components"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.ExposedGameObjectExtension.FindDeepChild(UnityEngine.GameObject,System.String,Utils.IterativeSearchType)">
+            <summary>
+                Extension method to find nested children by name using either
+                a breadth-first or depth-first search. Default is breadth-first.
+            </summary>
+            <param name="gameObject"></param>
+            <param name="childName">Name of the child object to search for.</param>
+            <param name="searchType">Whether to preform a breadth first or depth first search. Default is breadth first.</param>
+        </member>
         <member name="T:Jotunn.GameObjectGUIExtension">
             <summary>
                 Use only, if you know what you do.
@@ -3554,6 +3605,75 @@
                 Calculate the world rect of a RectTransform
             </summary>
             <param name="rectTransform"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Jotunn.Extensions.StringExtensions">
+            <summary>
+                Helper methods for strings
+            </summary>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.ContainsAny(System.String,System.String[])">
+            <summary>
+                Returns true if the string contains any of the substrings.
+            </summary>
+            <param name="str"></param>
+            <param name="substrings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.EndsWithAny(System.String,System.String[])">
+            <summary>
+                Returns true if the string ends with any one of the suffixes.
+            </summary>
+            <param name="str"></param>
+            <param name="suffixes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.StartsWithAny(System.String,System.String[])">
+            <summary>
+                Returns true if the string starts with any one of the prefixes.
+            </summary>
+            <param name="str"></param>
+            <param name="prefixes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.RemoveSuffix(System.String,System.String)">
+            <summary>
+                If the string ends with the suffix then return a copy of the string
+                with the suffix stripped, otherwise return the original string.
+            </summary>
+            <param name="s"></param>
+            <param name="suffix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.RemovePrefix(System.String,System.String)">
+            <summary>
+                If the string starts with the prefix then return a copy of the string
+                with the prefix stripped, otherwise return the original string.
+            </summary>
+            <param name="s"></param>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.CapitalizeFirstLetter(System.String)">
+            <summary>
+                Returns a copy of the string with the first character capitalized
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Jotunn.Extensions.TransformExtensions">
+            <summary>
+                Convenience methods for Transforms
+            </summary>
+        </member>
+        <member name="M:Jotunn.Extensions.TransformExtensions.FindDeepChild(UnityEngine.Transform,System.String,Utils.IterativeSearchType)">
+            <summary>
+                Extension method to find nested children by name using either
+                a breadth-first or depth-first search. Default is breadth-first.
+            </summary>
+            <param name="transform"></param>
+            <param name="childName">Name of the child object to search for.</param>
+            <param name="searchType">Whether to preform a breadth first or depth first search. Default is breadth first.</param>
             <returns></returns>
         </member>
         <member name="T:Jotunn.ZNetExtension">
@@ -4039,11 +4159,6 @@
         <member name="F:Jotunn.Managers.GUIManager.GUIInStart">
             <summary>
                 Indicates if the PixelFix must be created for the start or main scene.
-            </summary>
-        </member>
-        <member name="F:Jotunn.Managers.GUIManager.Headless">
-            <summary>
-                Cache headless state
             </summary>
         </member>
         <member name="M:Jotunn.Managers.GUIManager.IsHeadless">
@@ -6042,12 +6157,22 @@
         </member>
         <member name="E:Jotunn.Managers.SynchronizationManager.OnConfigurationSynchronized">
             <summary>
-                Event triggered after server configuration is applied to client
+                Event triggered after configuration has been synced on either the server or client
+            </summary>
+        </member>
+        <member name="E:Jotunn.Managers.SynchronizationManager.OnSyncingConfiguration">
+            <summary>
+                Event triggered before syncing configuration on either the server or client
             </summary>
         </member>
         <member name="E:Jotunn.Managers.SynchronizationManager.OnAdminStatusChanged">
             <summary>
                 Event triggered after a clients admin status changed on the server
+            </summary>
+        </member>
+        <member name="E:Jotunn.Managers.SynchronizationManager.OnConfigurationWindowClosed">
+            <summary>
+                Event triggered after the in-game configuration manager window is closed
             </summary>
         </member>
         <member name="P:Jotunn.Managers.SynchronizationManager.Instance">
@@ -6062,7 +6187,7 @@
         </member>
         <member name="P:Jotunn.Managers.SynchronizationManager.PlayerIsAdmin">
             <summary>
-                Clientside indicator if the current player has admin status on 
+                Clientside indicator if the current player has admin status on
                 the current world, always true on local games
             </summary>
         </member>
@@ -6176,6 +6301,11 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:Jotunn.Managers.SynchronizationManager.InvokeOnConfigurationWindowClosed">
+            <summary>
+                Safely invoke the <see cref="E:Jotunn.Managers.SynchronizationManager.OnConfigurationWindowClosed"/> event
+            </summary>
+        </member>
         <member name="M:Jotunn.Managers.SynchronizationManager.FejdStartup_Awake">
             <summary>
                 Initial cache the config values of dependent plugins and register ourself to config change events
@@ -6224,17 +6354,23 @@
                 Reset configs which may have been overwritten with server values to the local value
             </summary>
         </member>
-        <member name="M:Jotunn.Managers.SynchronizationManager.InvokeOnConfigurationSynchronized(System.Boolean)">
+        <member name="M:Jotunn.Managers.SynchronizationManager.InvokeOnConfigurationSynchronized(System.Boolean,System.Collections.Generic.HashSet{System.String})">
             <summary>
                 Safely invoke the <see cref="E:Jotunn.Managers.SynchronizationManager.OnConfigurationSynchronized"/> event
             </summary>
         </member>
-        <member name="M:Jotunn.Managers.SynchronizationManager.ApplyConfigZPackage(ZPackage,System.Boolean@)">
+        <member name="M:Jotunn.Managers.SynchronizationManager.InvokeOnSyncingConfiguration">
+            <summary>
+                Safely invoke the <see cref="E:Jotunn.Managers.SynchronizationManager.OnSyncingConfiguration"/> event
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.SynchronizationManager.ApplyConfigZPackage(ZPackage,System.Boolean@,System.Collections.Generic.HashSet{System.String}@)">
             <summary>
                 Apply received configuration values locally and regenerate the cache
             </summary>
             <param name="configPkg">Package of config tuples</param>
             <param name="initial">Indicator if this was an initial config package</param>
+            <param name="pluginGUIDs">Indicator if this was an initial config package</param>
         </member>
         <member name="M:Jotunn.Managers.SynchronizationManager.GenerateConfigZPackage(System.Boolean,System.Collections.Generic.List{System.Tuple{System.String,System.String,System.String,System.String}})">
             <summary>
@@ -7236,6 +7372,11 @@
                 Is this the initial synchronization?
             </summary>
         </member>
+        <member name="P:Jotunn.Utils.ConfigurationSynchronizationEventArgs.UpdatedPluginGUIDs">
+            <summary>
+                GUID for each Plugin that received configuration data.
+            </summary>
+        </member>
         <member name="M:Jotunn.Utils.ExtEquipment.VisEquipment_UpdateEquipmentVisuals(VisEquipment)">
             <summary>
                 Get non-vanilla variant indices from the ZDO
@@ -8193,6 +8334,11 @@
                 Dumps all shader information of a GameObject and its childs onto debug log
             </summary>
             <param name="gameObject"></param>
+        </member>
+        <member name="T:Jotunn.Utils.SyncingConfigurationEventArgs">
+            <summary>
+                Event args class for syncing configuration event
+            </summary>
         </member>
         <member name="T:Jotunn.Utils.UndoActions">
             <summary>

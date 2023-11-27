@@ -21,12 +21,12 @@
     <Company>Digitalroot Technologies</Company>
     <Product>Digitalroot Valheim Jotunn (JvL) mod References</Product>
     <Description>References for Valheim mod Jotunn (JvL)</Description>
-    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+    <PackageReleaseNotes>Update JvL to 2.15.0</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <NoBuild>false</NoBuild>
-    <Version>2.14.6</Version>
+    <Version>2.15.0</Version>
     <RestoreAdditionalProjectSources>
       https://api.nuget.org/v3/index.json;
       https://nuget.bepinex.dev/v3/index.json;
