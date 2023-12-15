@@ -4574,7 +4574,7 @@
         </member>
         <member name="M:Jotunn.Managers.InputManager.GetGamepadKeyCode(Jotunn.Managers.InputManager.GamepadButton)">
             <summary>
-                Translate a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its <see cref="T:UnityEngine.KeyCode"/> value
+                Translates a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its <see cref="T:UnityEngine.KeyCode"/> value
             </summary>
         </member>
         <member name="M:Jotunn.Managers.InputManager.GetGamepadInput(Jotunn.Managers.InputManager.GamepadButton)">
@@ -4584,12 +4584,12 @@
         </member>
         <member name="M:Jotunn.Managers.InputManager.GetGamepadString(Jotunn.Managers.InputManager.GamepadButton)">
             <summary>
-                Translate a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its printable string value
+                Translates a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its printable string value
             </summary>
         </member>
         <member name="M:Jotunn.Managers.InputManager.GetGamepadButton(GamepadInput)">
             <summary>
-                Translate an axis string to its <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> value
+                Translates an axis string to its <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> value
             </summary>
         </member>
         <member name="M:Jotunn.Managers.InputManager.GetGamepadButton(System.String)">
@@ -7607,6 +7607,56 @@
         <member name="P:Jotunn.Utils.IModPrefab.SourceMod">
             <summary>
                 Reference to the <see cref="T:BepInEx.BepInPlugin"/> which added this prefab.
+            </summary>
+        </member>
+        <member name="T:Jotunn.Utils.InputUtils">
+            <summary>
+                Utility class for converting inputs to different formats
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.KeyCodeToKey(UnityEngine.KeyCode)">
+            <summary>
+                Translates a Unity <see cref="T:UnityEngine.KeyCode"/> KeyCode to a InputSystem <see cref="T:UnityEngine.InputSystem.Key"/>
+            </summary>
+            <param name="key"></param>
+            <returns>The matching Key or Key.None, if not assignable</returns>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.TryKeyCodeToMouseButton(UnityEngine.KeyCode,UnityEngine.InputSystem.LowLevel.MouseButton@)">
+            <summary>
+                Tries to convert a <see cref="T:UnityEngine.KeyCode"/> KeyCode to a InputSystem <see cref="T:UnityEngine.InputSystem.LowLevel.MouseButton"/>
+            </summary>
+            <param name="key"></param>
+            <param name="mouseButton"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.GetGamepadKeyCode(Jotunn.Managers.InputManager.GamepadButton)">
+            <summary>
+                Translates a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its <see cref="T:UnityEngine.KeyCode"/> value
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.GetGamepadInput(Jotunn.Managers.InputManager.GamepadButton)">
+            <summary>
+                Translates a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its axis string value
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.GetGamepadString(Jotunn.Managers.InputManager.GamepadButton)">
+            <summary>
+                Translates a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its printable string value
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.GetGamepadButton(GamepadInput)">
+            <summary>
+                Translates an axis string to its <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> value
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.GetGamepadButton(System.String)">
+            <summary>
+                Translate an axis string to its <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> value
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.GetGamepadButton(UnityEngine.KeyCode)">
+            <summary>
+                Translates a <see cref="T:UnityEngine.KeyCode"/> to its <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> value
             </summary>
         </member>
         <member name="T:Jotunn.Utils.ModCompatibility">
