@@ -836,9 +836,24 @@
                 Multiplier for the amount of items created by the recipe based on the quality of the crafting materials. Defaults to <c>1</c>.
             </summary>
         </member>
+        <member name="P:Jotunn.Configs.ItemConfig.Weight">
+            <summary>
+                Weight of a single item in an inventory. Values lower than 0 are ignored when applying the config. Defaults to <c>-1</c>.
+            </summary>
+        </member>
+        <member name="F:Jotunn.Configs.ItemConfig.StackSize">
+            <summary>
+                Maximum stack size. Values lower than 1 are ignored when applying the config. Defaults to <c>-1</c>.
+            </summary>
+        </member>
         <member name="P:Jotunn.Configs.ItemConfig.Icons">
             <summary>
                 Icons for this item. If more than one icon is added, this item automatically has variants.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.ItemConfig.Icon">
+            <summary>
+                Gets or sets the first icon of the item. For item variants with multiple icons, use the <see cref="P:Jotunn.Configs.ItemConfig.Icons"/> property instead.
             </summary>
         </member>
         <member name="P:Jotunn.Configs.ItemConfig.StyleTex">
@@ -2320,6 +2335,11 @@
                 Indicator if references from <see cref="T:Jotunn.Entities.Mock`1"/>s will be replaced at runtime.
             </summary>
         </member>
+        <member name="P:Jotunn.Entities.CustomItem.StyleTex">
+            <summary>
+                Texture holding the variants different styles.
+            </summary>
+        </member>
         <member name="P:Jotunn.Entities.CustomItem.FixConfig">
             <summary>
                 Indicator if references from configs should get replaced
@@ -3456,6 +3476,15 @@
             <param name="childName">Name of the child object to search for.</param>
             <param name="searchType">Whether to preform a breadth first or depth first search. Default is breadth first.</param>
         </member>
+        <member name="M:Jotunn.ExposedGameObjectExtension.FindDeepChild(UnityEngine.GameObject,System.Collections.Generic.IEnumerable{System.String},Utils.IterativeSearchType)">
+            <summary>
+                Extension method to find nested children by an ordered list of names using either
+                a breadth-first or depth-first search. Default is breadth-first.
+            </summary>
+            <param name="gameObject"></param>
+            <param name="childNames">Names in order of the child object to search for.</param>
+            <param name="searchType">Whether to preform a breadth first or depth first search. Default is breadth first.</param>
+        </member>
         <member name="T:Jotunn.GameObjectGUIExtension">
             <summary>
                 Use only, if you know what you do.
@@ -3872,6 +3901,103 @@
             <summary>
                 The BepInEx plugin Mod GUID being used (com.jotunn.jotunn).
             </summary>
+        </member>
+        <member name="T:Jotunn.Managers.AssetManager">
+            <summary>
+                Manager to handle interactions with the vanilla asset system, called SoftReferenceableAssets.
+                See the <a href="https://valheim.com/support/modding-faq-for-the-asset-bundle-update-0-217-40/">Vanilla FAQ</a> for more information.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Managers.AssetManager.Instance">
+            <summary>
+                The singleton instance of this manager.
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.AssetManager.#ctor">
+            <summary>
+                Hide .ctor
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.AssetManager.IsReady">
+            <summary>
+                Checks if the vanilla loader is ready.
+                If false, <see cref="P:SoftReferenceableAssets.Runtime.Loader">Runtime.Loader</see> must not be accessed and no assets may be loaded.
+                If the vanilla loader is initialized too early, mods can become incompatible.
+            </summary>
+            <returns>true if the vanilla asset loader is ready, false otherwise</returns>
+        </member>
+        <member name="M:Jotunn.Managers.AssetManager.AddAsset(UnityEngine.Object,UnityEngine.Object)">
+            <summary>
+                Registers a new asset with the same asset dependencies as the original asset and generates a unique AssetID.<br />
+                Assets can be added at any time and will be registered as soon as the vanilla loader is ready.
+            </summary>
+            <param name="asset">The asset to register</param>
+            <param name="original">Assets to copy dependencies from</param>
+            <returns>AssetID generated from the prefab's name</returns>
+        </member>
+        <member name="M:Jotunn.Managers.AssetManager.AddAsset(UnityEngine.Object)">
+            <summary>
+                Registers a new asset and generates a unique AssetID.<br />
+                Assets can be added at any time and will be registered as soon as the vanilla loader is ready.
+            </summary>
+            <param name="asset">The asset to register</param>
+            <returns>AssetID generated from the prefab's name</returns>
+        </member>
+        <member name="M:Jotunn.Managers.AssetManager.GenerateAssetID(UnityEngine.Object)">
+            <summary>
+                Generates a unique AssetID, based on the asset name
+            </summary>
+            <param name="asset"></param>
+            <returns>AssetID generated from the prefab's name</returns>
+        </member>
+        <member name="M:Jotunn.Managers.AssetManager.ClonePrefab(UnityEngine.GameObject,System.String,UnityEngine.Transform)">
+            <summary>
+                Clones a prefab and registers it in the SoftReference system with the same dependencies as the original asset
+            </summary>
+            <param name="asset"></param>
+            <param name="newName"></param>
+            <param name="parent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Managers.AssetManager.GetAssetID(System.Type,System.String)">
+            <summary>
+                Finds the AssetID by an asset name at runtime.<br />
+                The closed matching base type must be used.
+                E.g. for prefabs use <see cref="T:UnityEngine.GameObject"/>, for Textures use <see cref="T:UnityEngine.Texture2D"/> etc.<br />
+                If no asset is found, an invalid AssetID is returned.
+            </summary>
+            <param name="type">Asset type to search for</param>
+            <param name="name">Asset name to search for</param>
+            <returns>The AssetID of the searched asset if found, otherwise an invalid AssetID</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown if the vanilla asset system is not initialized yet</exception>
+        </member>
+        <member name="M:Jotunn.Managers.AssetManager.GetAssetID``1(System.String)">
+            <summary>
+                Finds the AssetID by an asset name at runtime.<br />
+                The closed matching base type must be used.
+                E.g. for prefabs use <see cref="T:UnityEngine.GameObject"/>, for Textures use <see cref="T:UnityEngine.Texture2D"/> etc.<br />
+                If no asset is found, an invalid AssetID is returned.
+            </summary>
+            <param name="name">Asset name to search for</param>
+            <typeparam name="T">Asset type to search for</typeparam>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException">Thrown if the vanilla asset system is not initialized yet</exception>
+        </member>
+        <member name="M:Jotunn.Managers.AssetManager.GetSoftReference(System.Type,System.String)">
+            <summary>
+                Finds the AssetID by an asset name at runtime and returns a SoftReference to the asset.<br />
+            </summary>
+            <param name="type">Asset type to search for</param>
+            <param name="name">Asset name to search for</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Managers.AssetManager.GetSoftReference``1(System.String)">
+            <summary>
+                Finds the AssetID by an asset name at runtime and returns a SoftReference to the asset.<br />
+            </summary>
+            <param name="name">Asset name to search for</param>
+            <typeparam name="T">Asset type to search for</typeparam>
+            <returns></returns>
         </member>
         <member name="T:Jotunn.Managers.CommandManager">
             <summary>
@@ -5414,6 +5540,11 @@
                 Prefix used by the Mock System to recognize Mock gameObject that must be replaced at some point.
             </summary>
         </member>
+        <member name="F:Jotunn.Managers.MockManager.JVLMockSeparator">
+            <summary>
+                String used by the Mock System to recognize start of a relative path of a replacement for a Mock gameObject.
+            </summary>
+        </member>
         <member name="F:Jotunn.Managers.MockManager.MockPrefabContainer">
             <summary>
                 Internal container for mocked prefabs
@@ -5479,6 +5610,11 @@
                 Name of the prefab that could not be resolved. Mock prefix is already removed.
             </summary>
         </member>
+        <member name="P:Jotunn.Managers.MockSystem.MockResolveException.FailedMockPath">
+            <summary>
+                Path within the prefab that could not be resolved.
+            </summary>
+        </member>
         <member name="P:Jotunn.Managers.MockSystem.MockResolveException.MockType">
             <summary>
                 Type of the prefab that could not be resolved.
@@ -5497,6 +5633,15 @@
             </summary>
             <param name="message"></param>
             <param name="failedMockName"></param>
+            <param name="mockType"></param>
+        </member>
+        <member name="M:Jotunn.Managers.MockSystem.MockResolveException.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type)">
+            <summary>
+                Creates a new instance of the <see cref="T:Jotunn.Managers.MockSystem.MockResolveException" /> class.
+            </summary>
+            <param name="message"></param>
+            <param name="failedMockName"></param>
+            <param name="failedMockPath"></param>
             <param name="mockType"></param>
         </member>
         <member name="T:Jotunn.Managers.NetworkManager">
@@ -5781,7 +5926,7 @@
         <member name="E:Jotunn.Managers.PrefabManager.OnPrefabsRegistered">
             <summary>
                 Event that gets fired after registering all custom prefabs to <see cref="T:ZNetScene"/>.
-                Your code will execute every time a new ZNetScene is created (on every game start). 
+                Your code will execute every time a new ZNetScene is created (on every game start).
                 If you want to execute just once you will need to unregister from the event after execution.
             </summary>
         </member>
@@ -5894,14 +6039,15 @@
             <param name="gameObject"></param>
         </member>
         <member name="M:Jotunn.Managers.PrefabManager.InvokeOnVanillaObjectsAvailable">
-            <summary>
-                Safely invoke the <see cref="E:Jotunn.Managers.PrefabManager.OnVanillaPrefabsAvailable"/> event
-            </summary>
+             <summary>
+                 Safely invoke the <see cref="E:Jotunn.Managers.PrefabManager.OnVanillaPrefabsAvailable"/> event
+             </summary>
             
         </member>
         <member name="T:Jotunn.Managers.PrefabManager.Cache">
             <summary>
-                The global cache of prefabs per scene.
+                Global cache of Unity Objects by asset name.<br />
+                Built on first access of every type and is cleared on scene change.
             </summary>
         </member>
         <member name="M:Jotunn.Managers.PrefabManager.Cache.GetPrefab(System.Type,System.String)">
@@ -5936,6 +6082,21 @@
             <param name="newObject"></param>
             <param name="name"></param>
             <returns></returns>
+        </member>
+        <member name="M:Jotunn.Managers.PrefabManager.Cache.Clear">
+            <summary>
+                Clears the entire cache, resulting in a rebuilt on the next access.<br />
+                This can be useful if an asset is loaded late after a scene change and might be missing in the cache.
+                Rebuilding can be an expensive operation, so use with caution.
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.PrefabManager.Cache.Clear``1">
+            <summary>
+                Clears the cache for a specific type, resulting in a rebuilt on the next access.<br />
+                This can be useful if an asset is loaded late after a scene change and might be missing in the cache.
+                Rebuilding can be an expensive operation, so use with caution.
+            </summary>
+            <typeparam name="T">The type of object to clear the cache for</typeparam>
         </member>
         <member name="T:Jotunn.Managers.RenderManager">
             <summary>
@@ -6021,12 +6182,27 @@
             <param name="renderRequest"></param>
             <returns>If no active visual component is attached to the target or any child, this method returns null.</returns>
         </member>
-        <member name="M:Jotunn.Managers.RenderManager.SpawnSafe(Jotunn.Managers.RenderManager.RenderRequest)">
+        <member name="M:Jotunn.Managers.RenderManager.SpawnRenderClone(Jotunn.Managers.RenderManager.RenderRequest)">
             <summary>
                 Spawn a prefab without any Components except visuals. Also prevents calling Awake methods of the prefab.
             </summary>
             <param name="request"></param>
             <returns></returns>
+        </member>
+        <member name="M:Jotunn.Managers.RenderManager.RecursivelyRemoveComponents(UnityEngine.Transform,Jotunn.Managers.RenderManager.RenderRequest)">
+            <summary>
+                Recursively remove all components not needed for rendering in order of their dependencies.
+            </summary>
+            <param name="parentTransform"></param>
+            <param name="request"></param>
+            <returns>false if components could not be removed, true otherwise</returns>
+        </member>
+        <member name="M:Jotunn.Managers.RenderManager.GetTopolocialSort(UnityEngine.Transform)">
+            <summary>
+                Topological sort (regarding dependencies between components) of all components of this transforms gameobject
+            </summary>
+            <param name="tranform"></param>
+            <returns>A topologically sorted list of types. Null if cycles have been detected.</returns>
         </member>
         <member name="T:Jotunn.Managers.RenderManager.CreateTemporaryRenderTexture">
             <summary>
@@ -6091,6 +6267,11 @@
                 Create a new RenderRequest
             </summary>
             <param name="target">Object to be rendered. A copy of the provided GameObject will be created for rendering</param> 
+        </member>
+        <member name="P:Jotunn.Managers.RenderManager.RenderRequest.ParticleSimulationTime">
+            <summary>
+                Simulates the particle effects for this amount of seconds. Less than 0 for no particles.
+            </summary>
         </member>
         <member name="T:Jotunn.Managers.SkillManager">
             <summary>
@@ -6541,7 +6722,7 @@
         </member>
         <member name="T:Jotunn.Managers.ZoneManager">
             <summary>
-                Manager for adding custom Locations and Vegetation.
+                Manager for adding custom Locations, Vegetation and Clutter.
             </summary>
         </member>
         <member name="P:Jotunn.Managers.ZoneManager.Instance">
@@ -6557,14 +6738,42 @@
         <member name="E:Jotunn.Managers.ZoneManager.OnVanillaLocationsAvailable">
             <summary>
                 Event that gets fired after the vanilla locations are in memory and available for cloning or editing.
-                Your code will execute every time before a new <see cref="T:ObjectDB"/> is copied (on every menu start).
+                Your code will execute every time a new <see cref="T:ZoneSystem"/> is available.
+                If you want to execute just once you will need to unregister from the event after execution.
+            </summary>
+        </member>
+        <member name="E:Jotunn.Managers.ZoneManager.OnLocationsRegistered">
+            <summary>
+                Event that gets fired after all <see cref="T:Jotunn.Entities.CustomLocation"/> are registered in the <see cref="T:ZoneSystem"/>.
+                Your code will execute every time a new <see cref="T:ZoneSystem"/> is available.
                 If you want to execute just once you will need to unregister from the event after execution.
             </summary>
         </member>
         <member name="E:Jotunn.Managers.ZoneManager.OnVanillaClutterAvailable">
             <summary>
                 Event that gets fired after the vanilla clutter is in memory and available obtain.
-                Your code will execute every time before a new <see cref="T:ClutterSystem"/> is instantiated.
+                Your code will execute every time a new <see cref="T:ClutterSystem"/> is available.
+                If you want to execute just once you will need to unregister from the event after execution.
+            </summary>
+        </member>
+        <member name="E:Jotunn.Managers.ZoneManager.OnClutterRegistered">
+            <summary>
+                Event that gets fired after all <see cref="T:Jotunn.Entities.CustomClutter"/> are registered in the <see cref="T:ClutterSystem"/>.
+                Your code will execute every time a new <see cref="T:ClutterSystem"/> is available.
+                If you want to execute just once you will need to unregister from the event after execution.
+            </summary>
+        </member>
+        <member name="E:Jotunn.Managers.ZoneManager.OnVanillaVegetationAvailable">
+            <summary>
+                Event that gets fired after the vanilla vegetation is in memory and available obtain.
+                Your code will execute every time a new <see cref="T:ZoneSystem"/> is available.
+                If you want to execute just once you will need to unregister from the event after execution.
+            </summary>
+        </member>
+        <member name="E:Jotunn.Managers.ZoneManager.OnVegetationRegistered">
+            <summary>
+                Event that gets fired after all <see cref="T:Jotunn.Entities.CustomVegetation"/> are registered in the <see cref="T:ZoneSystem"/>.
+                Your code will execute every time a new <see cref="T:ZoneSystem"/> is available.
                 If you want to execute just once you will need to unregister from the event after execution.
             </summary>
         </member>
@@ -6741,16 +6950,6 @@
             <param name="zoneSystem"><see cref="T:ZoneSystem"/> the location should be added to</param>
             <param name="zoneLocation"><see cref="T:ZoneSystem.ZoneLocation"/> to add</param>
             <param name="sourceMod"><see cref="T:BepInEx.BepInPlugin"/> which created the location</param>
-        </member>
-        <member name="M:Jotunn.Managers.ZoneManager.InvokeOnVanillaLocationsAvailable">
-            <summary>
-                Safely invoke OnVanillaLocationsAvailable
-            </summary>
-        </member>
-        <member name="M:Jotunn.Managers.ZoneManager.InvokeOnVanillaClutterAvailable">
-            <summary>
-                Safely invoke OnVanillaClutterAvailable
-            </summary>
         </member>
         <member name="T:Jotunn.GUI.ColorPicker">
             <summary>
