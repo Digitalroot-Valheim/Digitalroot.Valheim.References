@@ -9,7 +9,7 @@ SETLOCAL
 
 SET ValheimInstallPath="C:\Program Files (x86)\Steam\steamapps\common\Valheim\valheim_Data\Managed"
 echo ValheimInstallPath=%ValheimInstallPath%
-SET PublicizePath=".\lib"
+SET PublicizePath=".\Digitalroot.Valheim.References\lib"
 echo PublicizePath=%PublicizePath%
 SET OPTIONS=--strip
 echo OPTIONS=%OPTIONS%
@@ -28,6 +28,6 @@ call assembly-publicizer "%ValheimInstallPath:"=%\assembly_valheim.dll" %OPTIONS
 
 ENDLOCAL
 
-PAUSE
+REM PAUSE
 
 EXIT

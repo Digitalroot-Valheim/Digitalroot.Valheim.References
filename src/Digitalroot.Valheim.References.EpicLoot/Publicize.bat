@@ -9,7 +9,7 @@ SETLOCAL
 
 SET ValheimInstallPath="C:\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\plugins\EpicLoot"
 echo ValheimInstallPath=%ValheimInstallPath%
-SET PublicizePath=".\lib"
+SET PublicizePath=".\Digitalroot.Valheim.References.EpicLoot\lib"
 echo PublicizePath=%PublicizePath%
 SET OPTIONS=--strip
 echo OPTIONS=%OPTIONS%
@@ -19,6 +19,6 @@ call assembly-publicizer "%ValheimInstallPath:"=%\EpicLoot.dll" %OPTIONS% -o %Pu
 
 ENDLOCAL
 
-PAUSE
+REM PAUSE
 
 EXIT

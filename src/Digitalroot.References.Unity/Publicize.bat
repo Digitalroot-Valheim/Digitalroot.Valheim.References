@@ -9,7 +9,7 @@ SETLOCAL
 
 SET ValheimInstallPath="C:\Program Files (x86)\Steam\steamapps\common\Valheim\valheim_Data\Managed"
 echo ValheimInstallPath=%ValheimInstallPath%
-SET PublicizePath=".\lib"
+SET PublicizePath=".\Digitalroot.References.Unity\lib"
 echo PublicizePath=%PublicizePath%
 SET OPTIONS=--strip
 echo OPTIONS=%OPTIONS%
@@ -96,6 +96,6 @@ call assembly-publicizer "%ValheimInstallPath:"=%\UnityEngine.XRModule.dll" %OPT
 
 ENDLOCAL
 
-PAUSE
+REM PAUSE
 
 EXIT

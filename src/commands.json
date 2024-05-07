@@ -1,0 +1,24 @@
+{
+  "commands": {
+    "Publicize Unity": {
+      "fileName": "cmd.exe",
+      "workingDirectory": ".",
+      "arguments": "/c Digitalroot.References.Unity\\Publicize.bat"
+    },
+    "Publicize EpicLoot": {
+      "fileName": "cmd.exe",
+      "workingDirectory": ".",
+      "arguments": "/c Digitalroot.Valheim.References.EpicLoot\\Publicize.bat"
+    },
+    "Publicize Valheim": {
+      "fileName": "cmd.exe",
+      "workingDirectory": ".",
+      "arguments": "/c Digitalroot.Valheim.References\\Publicize.bat"
+    },
+    "Publicize JvL": {
+      "fileName": "cmd.exe",
+      "workingDirectory": ".",
+      "arguments": "/c Digitalroot.Valheim.References.JvL\\Publicize.bat"
+    }
+  }
+}

@@ -9,7 +9,7 @@ SETLOCAL
 
 SET ValheimInstallPath="C:\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\plugins\JvL"
 echo ValheimInstallPath=%ValheimInstallPath%
-SET PublicizePath=".\lib"
+SET PublicizePath=".\Digitalroot.Valheim.References.JvL\lib"
 echo PublicizePath=%PublicizePath%
 SET OPTIONS=--strip
 echo OPTIONS=%OPTIONS%
@@ -22,6 +22,6 @@ robocopy %ValheimInstallPath% %PublicizePath% Jotunn.* /R:3 /W:3 /XF "%ValheimIn
 
 ENDLOCAL
 
-PAUSE
+REM PAUSE
 
 EXIT
