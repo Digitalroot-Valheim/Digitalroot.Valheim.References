@@ -1225,6 +1225,11 @@
                 Piece 'Building' category
             </summary>
         </member>
+        <member name="P:Jotunn.Configs.PieceCategories.HeavyBuild">
+            <summary>
+                Piece 'HeavyBuild' category
+            </summary>
+        </member>
         <member name="P:Jotunn.Configs.PieceCategories.Furniture">
             <summary>
                 Piece 'Furniture' category
