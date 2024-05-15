@@ -21,12 +21,12 @@
     <Company>Digitalroot Technologies</Company>
     <Product>Digitalroot Valheim EpicLoot mod References</Product>
     <Description>References for Valheim mod EpicLoot</Description>
-    <PackageReleaseNotes>Update to EpicLoot 0.9.38</PackageReleaseNotes>
+    <PackageReleaseNotes>Update to EpicLoot 0.10.0</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <NoBuild>false</NoBuild>
-    <Version>0.9.38</Version>
+    <Version>0.10.0</Version>
     <RestoreAdditionalProjectSources>
       https://api.nuget.org/v3/index.json;
       https://nuget.bepinex.dev/v3/index.json;
