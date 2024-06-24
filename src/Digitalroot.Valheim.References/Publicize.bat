@@ -24,7 +24,7 @@ REM call assembly-publicizer "%ValheimInstallPath:"=%\assembly_steamworks.dll" %
 call assembly-publicizer "%ValheimInstallPath:"=%\assembly_sunshafts.dll" %OPTIONS% -o %PublicizePath%
 call assembly-publicizer "%ValheimInstallPath:"=%\assembly_utils.dll" %OPTIONS% -o %PublicizePath%
 call assembly-publicizer "%ValheimInstallPath:"=%\assembly_valheim.dll" %OPTIONS% -o %PublicizePath%
-
+call assembly-publicizer "%ValheimInstallPath:"=%\gui_framework.dll" %OPTIONS% -o %PublicizePath%
 
 ENDLOCAL
 
