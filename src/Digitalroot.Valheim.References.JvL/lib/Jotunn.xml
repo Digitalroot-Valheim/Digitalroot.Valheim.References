@@ -416,6 +416,16 @@
                 Galdr table crafting station
             </summary>
         </member>
+        <member name="P:Jotunn.Configs.CraftingStations.MeadKetill">
+            <summary>
+                Mead Ketill crafting station
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.CraftingStations.FoodPreparationTable">
+            <summary>
+                Food Preparation Table crafting station
+            </summary>
+        </member>
         <member name="M:Jotunn.Configs.CraftingStations.GetNames">
             <summary>
                 Gets the human readable name to internal names map
@@ -1235,6 +1245,21 @@
                 Piece 'Furniture' category
             </summary>
         </member>
+        <member name="P:Jotunn.Configs.PieceCategories.Food">
+            <summary>
+                Piece 'Food' category
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.PieceCategories.Mead">
+            <summary>
+                Piece 'Mead' category
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.PieceCategories.Feasts">
+            <summary>
+                Piece 'Feasts' category
+            </summary>
+        </member>
         <member name="P:Jotunn.Configs.PieceCategories.All">
             <summary>
                 All piece categories
@@ -1421,6 +1446,11 @@
                 Hoe piece table
             </summary>
         </member>
+        <member name="P:Jotunn.Configs.PieceTables.ServingTray">
+            <summary>
+                Serving Tray piece table
+            </summary>
+        </member>
         <member name="M:Jotunn.Configs.PieceTables.GetNames">
             <summary>
                 Gets the human readable name to internal names map
@@ -1591,6 +1621,79 @@
                 Checks if the requirement has any item and amount set.
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:Jotunn.Configs.RoomConfig">
+            <summary>
+                Configuration class for adding custom rooms.<br />
+                Use this in a constructor of <see cref="T:Jotunn.Entities.CustomRoom"/>
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.RoomConfig.ThemeName">
+            <summary>
+                Theme name of this room.  If adding a room to a vanilla dungeon, use nameof(Room.Theme.value)
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.RoomConfig.Enabled">
+            <summary>
+                If set to false, room will not be added to <see cref="F:DungeonGenerator.m_availableRooms"/>, thus
+                won't be used during generation.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.RoomConfig.Entrance">
+            <summary>
+                Flag indicating if this room is a dungeon entrance.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.RoomConfig.Endcap">
+            <summary>
+                Flag indicating if this room is an endcap.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.RoomConfig.Divider">
+            <summary>
+                Flag indicating if this room is a divider.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.RoomConfig.EndcapPrio">
+            <summary>
+                A rank value to prioritize this endcap over others during generation.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.RoomConfig.MinPlaceOrder">
+            <summary>
+                Exclude this room if the adjoining connection's <see cref="F:RoomConnection.m_placeOrder"/> is less than this value. 
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.RoomConfig.Weight">
+            <summary>
+                A weight value used to sort available rooms during some modes of generation.  Defaults to 1f.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.RoomConfig.FaceCenter">
+            <summary>
+                Flag to orient this room towards the center.  Used only for generating camps (draugr/fuling villages).
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.RoomConfig.Perimeter">
+            <summary>
+                Flag to ensure this room is only placed around the perimeter of a camp.  Used only for generating camps (draugr/fuling villages).
+            </summary>
+        </member>
+        <member name="M:Jotunn.Configs.RoomConfig.#ctor(System.String)">
+            <summary>
+                Create a config with a theme name.
+            </summary>
+            <param name="themeName"></param>
+        </member>
+        <member name="M:Jotunn.Configs.RoomConfig.#ctor">
+            <summary>
+                Create a new <see cref="T:Jotunn.Configs.RoomConfig"/>
+            </summary>
+        </member>
+        <member name="M:Jotunn.Configs.RoomConfig.Apply(Room)">
+            <summary>
+                Converts the RoomConfig to a Valheim style <see cref="T:Room"/>.
+            </summary>
         </member>
         <member name="T:Jotunn.Configs.SkillConfig">
             <summary>
@@ -3013,6 +3116,82 @@
         <member name="M:Jotunn.Entities.CustomRecipe.ToString">
             <inheritdoc/>
         </member>
+        <member name="T:Jotunn.Entities.CustomRoom">
+            <summary>
+                Main interface for adding custom dungeon rooms to the game.<br />
+                All custom rooms have to be wrapped inside this class to add it to Jötunns <see cref="T:Jotunn.Managers.DungeonManager"/>.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Entities.CustomRoom.Prefab">
+            <summary>
+                The prefab for this custom room.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Entities.CustomRoom.Room">
+            <summary>
+                The <see cref="T:Room"/> component for this custom room as a shortcut.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Entities.CustomRoom.Name">
+            <summary>
+                The name of this custom room as a shortcut.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Entities.CustomRoom.FixReference">
+            <summary>
+                Indicator if references from <see cref="T:Jotunn.Entities.Mock`1"/>s will be replaced at runtime.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Entities.CustomRoom.ThemeName">
+            <summary>
+                Theme name of this room.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Entities.CustomRoom.RoomData">
+            <summary>
+                Associated <see cref="T:DungeonDB.RoomData"/> holding data used during generation.
+            </summary>
+        </member>
+        <member name="M:Jotunn.Entities.CustomRoom.#ctor(UnityEngine.AssetBundle,System.String,System.Boolean,Jotunn.Configs.RoomConfig)">
+            <summary>
+                Custom room from a prefab loaded from an <see cref="T:UnityEngine.AssetBundle"/> with a <see cref="T:Room"/> made from a <see cref="T:Jotunn.Configs.RoomConfig"/>.<br />
+                Can fix references for <see cref="T:Jotunn.Entities.Mock`1"/>s.
+            </summary>
+            <param name="assetBundle">A preloaded <see cref="T:UnityEngine.AssetBundle"/></param>
+            <param name="assetName">Name of the prefab in the bundle.</param>
+            <param name="fixReference">If true references for <see cref="T:Jotunn.Entities.Mock`1"/> objects get resolved at runtime by Jötunn.</param>
+            <param name="roomConfig">The config for this custom room.</param>
+        </member>
+        <member name="M:Jotunn.Entities.CustomRoom.#ctor(UnityEngine.GameObject,System.Boolean,Jotunn.Configs.RoomConfig)">
+            <summary>
+                Custom room from a prefab loaded from an <see cref="T:UnityEngine.AssetBundle"/> with a <see cref="T:Room"/> made from a <see cref="T:Jotunn.Configs.RoomConfig"/>.<br />
+                Can fix references for <see cref="T:Jotunn.Entities.Mock`1"/>s.
+            </summary>
+            <param name="prefab">The prefab for this custom room.</param>
+            <param name="fixReference">If true references for <see cref="T:Jotunn.Entities.Mock`1"/> objects get resolved at runtime by Jötunn.</param>
+            <param name="roomConfig">The config for this custom room.</param>
+        </member>
+        <member name="M:Jotunn.Entities.CustomRoom.IsCustomRoom(System.String)">
+            <summary>
+                Helper method to determine if a prefab with a given name is a custom room created with Jötunn.
+            </summary>
+            <param name="prefabName">Name of the prefab to test.</param>
+            <returns>true if the prefab is added as a custom item to the <see cref="T:Jotunn.Managers.DungeonManager"/>.</returns>
+        </member>
+        <member name="M:Jotunn.Entities.CustomRoom.IsVanillaTheme(System.String)">
+            <summary>
+                Helper method to determine if a given themeName matches any vanilla <see cref="T:Room.Theme"/> values.
+            </summary>
+            <param name="themeName">Name of the theme to test.</param>
+            <returns>true if the themeName matches a built-in value, or false.</returns>
+        </member>
+        <member name="M:Jotunn.Entities.CustomRoom.GetRoomTheme(System.String)">
+            <summary>
+                Helper method to get the <see cref="T:Room.Theme"/> value, if the given themeName matches any vanilla values.
+            </summary>
+            <param name="themeName">Name of the theme.</param>
+            <returns>The <see cref="T:Room.Theme"/> value, or Room.Theme.None if no match is found.</returns>        
+        </member>
         <member name="T:Jotunn.Entities.CustomRPC">
             <summary>
                 Wrapper for Valheim's RPC calls implementing convenience delegate methods for client and server processing of packages.<br/>
@@ -4164,6 +4343,96 @@
                 Enable cumulative level effects for custom creatures requesting it. Thx ASP for the code.
             </summary>
         </member>
+        <member name="T:Jotunn.Managers.DungeonManager">
+            <summary>
+               Manager for handling all custom data added to the game related to creatures.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Managers.DungeonManager.Instance">
+            <summary>
+                The singleton instance of this manager.
+            </summary>
+        </member>
+        <member name="E:Jotunn.Managers.DungeonManager.OnVanillaRoomsAvailable">
+            <summary>
+                Event that gets fired after the vanilla <see cref="T:DungeonDB"/> has loaded rooms.  Your code will execute
+                every time a main scene is started (on joining a game). <br />
+                If you want to execute just once you will need to unregister from the event after execution.
+            </summary>
+        </member>
+        <member name="E:Jotunn.Managers.DungeonManager.OnRoomsRegistered">
+            <summary>
+                Event that gets fired after all custom rooms are registered to the <see cref="T:DungeonDB"/>.  Your code will execute
+                every time a main scene is started (on joining a game). <br />
+                If you want to execute just once you will need to unregister from the event after execution.
+            </summary>
+        </member>
+        <member name="F:Jotunn.Managers.DungeonManager.Rooms">
+            <summary>
+                Internal dictionary of all custom rooms
+            </summary>
+        </member>
+        <member name="F:Jotunn.Managers.DungeonManager.DungeonRoomContainer">
+            <summary>
+                Container for Jötunn's DungeonRooms in the DontDestroyOnLoad scene.
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.DungeonManager.#ctor">
+            <summary>
+                Hide .ctor
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.DungeonManager.Jotunn#IManager#Init">
+            <summary>
+                Creates the spawner container and registers all hooks.
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.DungeonManager.AddCustomRoom(Jotunn.Entities.CustomRoom)">
+            <summary>
+                Add a <see cref="T:Jotunn.Entities.CustomRoom"/> to the game.<br />
+                Checks if the custom room is valid and unique and adds it to the list of custom rooms.
+            </summary>
+            <param name="customRoom">The custom Room to add.</param>
+            <returns>true if the custom Room was added to the manager.</returns>
+        </member>
+        <member name="M:Jotunn.Managers.DungeonManager.GetRoom(System.String)">
+            <summary>
+                Get a custom room by its name.
+            </summary>
+            <param name="name">Name of the custom room to search.</param>
+            <returns>The <see cref="T:Jotunn.Entities.CustomRoom"/> if found.</returns>
+        </member>
+        <member name="M:Jotunn.Managers.DungeonManager.RemoveRoom(System.String)">
+            <summary>
+                Remove a custom room by its name.
+            </summary>
+            <param name="name">Name of the room to remove.</param>
+        </member>
+        <member name="M:Jotunn.Managers.DungeonManager.RegisterDungeonTheme(UnityEngine.GameObject,System.String)">
+            <summary>
+                Registers a new dungeon theme, identified by a unique theme name string.<br />
+                Assets can be added at any time and will be registered as soon as the vanilla loader is ready.
+            </summary>
+            <param name="prefab">The <see cref="T:DungeonGenerator"/> prefab.</param>
+            <param name="themeName">The name of the theme to register.</param>
+            <returns>True if theme is successfullly registered, otherwise false.</returns>
+        </member>
+        <member name="M:Jotunn.Managers.DungeonManager.RegisterEnvironment(UnityEngine.AssetBundle,System.String)">
+            <summary>
+                Adds a new environment prefab to be registered when <see cref="M:ZoneSystem.SetupLocations"/> runs.<br />
+                If you intend to use a custom interior environment <see cref="F:Location.m_interiorEnvironment"/>, this method enables you 
+                to provide a prefab with an appropriately configured <see cref="T:LocationList"/> containing atleast one
+                <see cref="T:EnvSetup"/> within <see cref="F:LocationList.m_environments"/>.
+            </summary>
+            <param name="assetBundle">The <see cref="T:UnityEngine.AssetBundle"/> containing the prefab.</param>
+            <param name="prefabName">The name of the prefab to register.</param>
+        </member>
+        <member name="M:Jotunn.Managers.DungeonManager.OnDungeonDBGetRoom(System.Int32)">
+            <summary>
+                Attempt to get room by hash.
+            </summary>
+            <param name="hash"></param>
+        </member>
         <member name="T:Jotunn.Managers.GUIManager">
             <summary>
                 Manager for handling anything GUI related. Provides Valheim style 
@@ -4713,6 +4982,22 @@
                 Translate a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its axis string value
             </summary>
         </member>
+        <member name="M:Jotunn.Managers.InputManager.GetAxisPath(System.String)">
+            <summary>
+                Translate an axis string to its
+                <see cref="P:UnityEngine.InputSystem.InputBinding.path">UnityEngine.InputSystem.InputBinding.path</see> value
+            </summary>
+            <param name="axis"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Managers.InputManager.GetGamepadInputPath(GamepadInput)">
+            <summary>
+                Translate a <see cref="T:GamepadInput"/> to its
+                <see cref="P:UnityEngine.InputSystem.InputBinding.path">UnityEngine.InputSystem.InputBinding.path</see> value
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="M:Jotunn.Managers.InputManager.GetGamepadString(Jotunn.Managers.InputManager.GamepadButton)">
             <summary>
                 Translates a <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> to its printable string value
@@ -4960,7 +5245,7 @@
         </member>
         <member name="M:Jotunn.Managers.ItemManager.ReloadKnownRecipes(Player)">
             <summary>
-                Hook on <see cref="M:Player.OnSpawned"/> to refresh recipes for the custom items.
+                Hook on <see cref="M:Player.OnSpawned(System.Boolean)"/> to refresh recipes for the custom items.
             </summary>
             <param name="self"></param>
         </member>
@@ -5805,9 +6090,18 @@
             <summary>
                 Add a new <see cref="T:Piece.PieceCategory"/> by name. A new category
                 gets assigned a random integer for internal use. If you pass a vanilla category
-                the actual integer value of the enum is returned. 
+                the actual integer value of the enum is returned.
             </summary>
             <param name="table">Prefab or item name of the PieceTable.</param>
+            <param name="name">Name of the category.</param>
+            <returns>int value of the vanilla or custom category</returns>
+        </member>
+        <member name="M:Jotunn.Managers.PieceManager.AddPieceCategory(System.String)">
+            <summary>
+                Add a new <see cref="T:Piece.PieceCategory"/> by name. A new category
+                gets assigned a random integer for internal use. If you pass a vanilla category
+                the actual integer value of the enum is returned.
+            </summary>
             <param name="name">Name of the category.</param>
             <returns>int value of the vanilla or custom category</returns>
         </member>
@@ -5825,6 +6119,13 @@
                 This does noting if a piece is still assigned to the category, remove it before calling this.
             </summary>
             <param name="table">Prefab or item name of the PieceTable.</param>
+            <param name="name">Name of the category.</param>
+        </member>
+        <member name="M:Jotunn.Managers.PieceManager.RemovePieceCategory(System.String)">
+            <summary>
+                Remove a <see cref="T:Piece.PieceCategory"/> from a table by name.
+                This does noting if a piece is still assigned to the category, remove it before calling this.
+            </summary>
             <param name="name">Name of the category.</param>
         </member>
         <member name="M:Jotunn.Managers.PieceManager.GetPieceCategories">
@@ -5897,7 +6198,7 @@
         </member>
         <member name="M:Jotunn.Managers.PieceManager.ReloadKnownRecipes(Player)">
             <summary>
-                Hook on <see cref="M:Player.OnSpawned"/> to refresh recipes for the custom items.
+                Hook on <see cref="M:Player.OnSpawned(System.Boolean)"/> to refresh recipes for the custom items.
             </summary>
             <param name="self"></param>
         </member>
@@ -7566,6 +7867,28 @@
             <param name="name"></param>
             <returns></returns>
         </member>
+        <member name="T:Jotunn.Utils.ConfigManagerUtils">
+            <summary>
+                Utility class for the BepInEx ConfigurationManager plugin, without requiring a hard dependency
+            </summary>
+        </member>
+        <member name="P:Jotunn.Utils.ConfigManagerUtils.Plugin">
+            <summary>
+                The ConfigurationManager plugin instance if installed, otherwise null
+            </summary>
+        </member>
+        <member name="P:Jotunn.Utils.ConfigManagerUtils.DisplayingWindow">
+            <summary>
+                Is the config manager main window displayed on screen<br />
+                Safe to use even if ConfigurationManager is not installed.
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.ConfigManagerUtils.BuildSettingList">
+            <summary>
+                Rebuild the setting list. Use to update the config manager window if config settings were removed or added while it was open.<br />
+                Safe to call even if ConfigurationManager is not installed.
+            </summary>
+        </member>
         <member name="T:Jotunn.Utils.ConfigurationSynchronizationEventArgs">
             <summary>
                 Event args class for configuration synchronization event
@@ -7579,6 +7902,16 @@
         <member name="P:Jotunn.Utils.ConfigurationSynchronizationEventArgs.UpdatedPluginGUIDs">
             <summary>
                 GUID for each Plugin that received configuration data.
+            </summary>
+        </member>
+        <member name="T:Jotunn.Utils.DungeonGeneratorTheme">
+            <summary>
+                Helper class for identifying the theme of custom rooms.
+            </summary>
+        </member>
+        <member name="F:Jotunn.Utils.DungeonGeneratorTheme.m_themeName">
+            <summary>
+                Name of a dungeon theme, used when matching generators with custom rooms.
             </summary>
         </member>
         <member name="M:Jotunn.Utils.ExtEquipment.VisEquipment_UpdateEquipmentVisuals(VisEquipment)">
@@ -7786,6 +8119,21 @@
                 <para>In-game value: "SunkenCrypt"</para>
             </summary>
         </member>
+        <member name="T:Jotunn.Utils.GameVersions">
+            <summary>
+                Utility class for getting game versions
+            </summary>
+        </member>
+        <member name="P:Jotunn.Utils.GameVersions.ValheimVersion">
+            <summary>
+                The semantic version of the running Valheim game
+            </summary>
+        </member>
+        <member name="P:Jotunn.Utils.GameVersions.NetworkVersion">
+            <summary>
+                The network version of the running Valheim game, determining compatibility with other clients
+            </summary>
+        </member>
         <member name="T:Jotunn.Utils.HashUtils">
             <summary>
                 A util class for computing various hashes
@@ -7857,6 +8205,21 @@
             <summary>
                 Translate an axis string to its <see cref="T:Jotunn.Managers.InputManager.GamepadButton"/> value
             </summary>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.GetAxisPath(System.String)">
+            <summary>
+                Translate an axis string to its <see cref="P:UnityEngine.InputSystem.InputBinding.path">UnityEngine.InputSystem.InputBinding.path</see> value
+            </summary>
+            <param name="axis"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Utils.InputUtils.GetGamepadInputPath(GamepadInput)">
+            <summary>
+                Translate a <see cref="T:GamepadInput"/> to its
+                <see cref="P:UnityEngine.InputSystem.InputBinding.path">UnityEngine.InputSystem.InputBinding.path</see> value
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
         </member>
         <member name="M:Jotunn.Utils.InputUtils.GetGamepadButton(UnityEngine.KeyCode)">
             <summary>
