@@ -9,6 +9,7 @@ env:
 
 jobs:
   install:
+    if: ${{ false }} # disable for now
     name: Install
     runs-on: ubuntu-latest
     timeout-minutes: 15
