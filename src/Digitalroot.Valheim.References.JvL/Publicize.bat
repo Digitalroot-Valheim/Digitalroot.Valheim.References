@@ -7,7 +7,7 @@ REM dotnet tool update -g BepInEx.AssemblyPublicizer.Cli
 
 SETLOCAL
 
-SET ValheimInstallPath="C:\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\plugins\JvL"
+SET ValheimInstallPath="C:\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\plugins\Jotunn"
 echo ValheimInstallPath=%ValheimInstallPath%
 SET PublicizePath=".\Digitalroot.Valheim.References.JvL\lib"
 echo PublicizePath=%PublicizePath%

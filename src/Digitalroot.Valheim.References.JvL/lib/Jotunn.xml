@@ -915,6 +915,15 @@
             </summary>
             <param name="requirementConfig"></param>
         </member>
+        <member name="M:Jotunn.Configs.ItemConfig.AddRequirement(System.String,System.Int32,System.Int32)">
+            <summary>
+                Appends a new <see cref="T:Jotunn.Configs.RequirementConfig"/> to the array of existing ones.<br />
+                If the item name is null or empty or the amount is less than 1 nothing will be added.
+            </summary>
+            <param name="item">The internal item prefab id, see https://valheim-modding.github.io/Jotunn/data/objects/item-list.html or the Valheim Wiki</param>
+            <param name="amount">The amount of items needed to craft this item</param>
+            <param name="amountPerLevel">The amount of items needed to upgrade this item. The basic formular is: Upgrade Amount = Item Level * Amount Per Level</param>
+        </member>
         <member name="T:Jotunn.Configs.KeyHintConfig">
             <summary>
                 Configuration class for adding custom key hints.
@@ -1080,6 +1089,13 @@
         <member name="P:Jotunn.Configs.LocationConfig.ExteriorRadius">
             <summary>
                 Radius of the location. Terrain delta is calculated within this circle.
+                If left unset, falls back to the prefab's <see cref="P:Jotunn.Configs.LocationConfig.Location"/> component value when one exists.
+                Defaults to 10f when no value has been set and no component is present.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.LocationConfig.HasExteriorRadius">
+            <summary>
+                True when the caller explicitly assigned a value to <see cref="P:Jotunn.Configs.LocationConfig.ExteriorRadius"/>.
             </summary>
         </member>
         <member name="P:Jotunn.Configs.LocationConfig.CenterFirst">
@@ -1165,7 +1181,13 @@
         </member>
         <member name="P:Jotunn.Configs.LocationConfig.InteriorRadius">
             <summary>
-                Radius of the interior attached to the location
+                Radius of the interior attached to the location.
+                If left unset, falls back to the prefab's <see cref="P:Jotunn.Configs.LocationConfig.Location"/> component value when one exists.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.LocationConfig.HasInteriorRadius">
+            <summary>
+                True when the caller explicitly assigned a value to <see cref="P:Jotunn.Configs.LocationConfig.InteriorRadius"/>.
             </summary>
         </member>
         <member name="P:Jotunn.Configs.LocationConfig.InteriorEnvironment">
@@ -1195,7 +1217,13 @@
         </member>
         <member name="P:Jotunn.Configs.LocationConfig.ClearArea">
             <summary>
-                Enable to forbid Vegetation from spawning inside the circle defined by <see cref="P:Jotunn.Configs.LocationConfig.ExteriorRadius"/>
+                Enable to forbid Vegetation from spawning inside the circle defined by <see cref="P:Jotunn.Configs.LocationConfig.ExteriorRadius"/>.
+                If left unset, falls back to the prefab's <see cref="P:Jotunn.Configs.LocationConfig.Location"/> component value when one exists.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.LocationConfig.HasClearArea">
+            <summary>
+                True when the caller explicitly assigned a value to <see cref="P:Jotunn.Configs.LocationConfig.ClearArea"/>.
             </summary>
         </member>
         <member name="M:Jotunn.Configs.LocationConfig.#ctor">
@@ -1386,6 +1414,15 @@
             </summary>
             <param name="requirementConfig"></param>
         </member>
+        <member name="M:Jotunn.Configs.PieceConfig.AddRequirement(System.String,System.Int32,System.Boolean)">
+            <summary>
+                Appends a new <see cref="T:Jotunn.Configs.RequirementConfig"/> to the array of existing ones.<br />
+                If the item name is null or empty or the amount is less than 1 nothing will be added.
+            </summary>
+            <param name="item">The internal item prefab id, see https://valheim-modding.github.io/Jotunn/data/objects/item-list.html or the Valheim Wiki</param>
+            <param name="amount">The amount of items needed to place this piece</param>
+            <param name="recover">Whether the item is dropped after deconstructing a piece</param>
+        </member>
         <member name="T:Jotunn.Configs.PieceTableConfig">
             <summary>
                 Configuration class for adding custom piece tables.
@@ -1571,6 +1608,15 @@
             </summary>
             <param name="requirementConfig"></param>
         </member>
+        <member name="M:Jotunn.Configs.RecipeConfig.AddRequirement(System.String,System.Int32,System.Int32)">
+            <summary>
+                Appends a new <see cref="T:Jotunn.Configs.RequirementConfig"/> to the array of existing ones.<br />
+                If the item name is null or empty or the amount is less than 1 nothing will be added.
+            </summary>
+            <param name="item">The internal item prefab id, see https://valheim-modding.github.io/Jotunn/data/objects/item-list.html or the Valheim Wiki</param>
+            <param name="amount">The amount of items needed to craft this item</param>
+            <param name="amountPerLevel">The amount of items needed to upgrade this item. The basic formular is: Upgrade Amount = Item Level * Amount Per Level</param>
+        </member>
         <member name="T:Jotunn.Configs.RequirementConfig">
             <summary>
                 Configuration class for requirements needed to craft items or build pieces.
@@ -1593,7 +1639,7 @@
         </member>
         <member name="P:Jotunn.Configs.RequirementConfig.Recover">
             <summary>
-                Determines if the used requirement will be rewarded again after dismanteling a piece. Defaults to false.
+                Whether the item is dropped after deconstructing a piece. Defaults to true.
             </summary>
         </member>
         <member name="M:Jotunn.Configs.RequirementConfig.#ctor">
@@ -1605,10 +1651,10 @@
             <summary>
                 Creates a new requirement config with the given values.
             </summary>
-            <param name="item"></param>
-            <param name="amount"></param>
-            <param name="amountPerLevel"></param>
-            <param name="recover"></param>
+            <param name="item">The internal item prefab id, see https://valheim-modding.github.io/Jotunn/data/objects/item-list.html or the Valheim Wiki</param>
+            <param name="amount">The amount of items needed to craft an item/piece</param>
+            <param name="amountPerLevel">The amount of items needed to upgrade an item. Does not apply to pieces. The basic formular is: Upgrade Amount = Item Level * Amount Per Level</param>
+            <param name="recover">Whether the item is dropped after deconstructing a piece</param>
         </member>
         <member name="M:Jotunn.Configs.RequirementConfig.GetRequirement">
             <summary>
@@ -2217,12 +2263,12 @@
         </member>
         <member name="P:Jotunn.Entities.ConsoleCommand.IsNetwork">
             <summary>
-                If true, this command will be allowed in networked play.
+                If true, this command will only be allowed in networked play.
             </summary>
         </member>
         <member name="P:Jotunn.Entities.ConsoleCommand.OnlyServer">
             <summary>
-                If true, and IsNetwork is true, this command will be allowed in networked play, but only for the server.
+                If true, and IsNetwork is true, this command will only be allowed in networked play, but only for the server.
             </summary>
         </member>
         <member name="P:Jotunn.Entities.ConsoleCommand.IsSecret">
@@ -2235,6 +2281,15 @@
                 The function that will be called when the user runs your console command, with space-delimited arguments.
             </summary>
             <param name="args">The arguments the user types, with spaces being the delimiter.</param>
+        </member>
+        <member name="M:Jotunn.Entities.ConsoleCommand.Run(System.String[],Terminal)">
+            <summary>
+                The function that will be called when the user runs your console command, with space-delimited arguments and
+                a context <see cref="T:Terminal"/> object (Console or Chat). Use context?.AddString() to write to the respective
+                output.
+            </summary>
+            <param name="args">The arguments the user types, with spaces being the delimiter.</param>
+            <param name="context">Terminal from which this command is run (Console or Chat window)</param>
         </member>
         <member name="M:Jotunn.Entities.ConsoleCommand.CommandOptionList">
             <summary>
@@ -2618,6 +2673,13 @@
         <member name="P:Jotunn.Entities.CustomLocalization.Map">
             <summary> Map that work as [language][token] = translation. </summary>
         </member>
+        <member name="M:Jotunn.Entities.CustomLocalization.IsYamlDotNetAvailable">
+            <summary>
+                Returns true if YamlDotNet is loaded in the current AppDomain.
+                Placed here (not on LocalizationManager) so it can be called without triggering
+                LocalizationManager's static constructor, which requires the game runtime.
+            </summary>
+        </member>
         <member name="M:Jotunn.Entities.CustomLocalization.#ctor">
             <summary>
                 Default constructor.
@@ -2676,6 +2738,11 @@
             <param name="language"> Language for the json file, for example, "English" </param>
             <param name="fileContent"> Entire file as string </param>
         </member>
+        <member name="M:Jotunn.Entities.CustomLocalization.AddYamlFile(System.String,System.String)">
+            <summary> Add a YAML language file. Keys are flat string-to-string mappings. </summary>
+            <param name="language"> Language for the yaml file, for example, "English" </param>
+            <param name="fileContent"> Entire file as string </param>
+        </member>
         <member name="M:Jotunn.Entities.CustomLocalization.AddLanguageFile(System.String)">
             <summary> Add a Unity style translation file. </summary>
             <param name="fileContent"> Contents of the language file in string format. </param>
@@ -2730,6 +2797,12 @@
                 Indicator if references from <see cref="T:Jotunn.Entities.Mock`1"/>s will be replaced at runtime.
             </summary>
         </member>
+        <member name="P:Jotunn.Entities.CustomLocation.SoftReference">
+            <summary>
+                Indicator if location is added from SoftReferenceableAssets.<br />
+                Used to delay mocking prefabs until ZoneSystem.SpawnLocation()
+            </summary>
+        </member>
         <member name="M:Jotunn.Entities.CustomLocation.#ctor(UnityEngine.GameObject,Jotunn.Configs.LocationConfig)">
             <summary>
                 Custom location from a prefab with a <see cref="T:Jotunn.Configs.LocationConfig"/> attached.<br />
@@ -2761,6 +2834,14 @@
             </summary>
             <param name="exteriorPrefab">The exterior prefab for this custom location.</param>
             <param name="interiorPrefab">The interior prefab for this custom location.</param>
+            <param name="fixReference">If true references for <see cref="T:Jotunn.Entities.Mock`1"/> objects get resolved at runtime by Jötunn.</param>
+            <param name="locationConfig">The <see cref="T:Jotunn.Configs.LocationConfig"/> for this custom location.</param>
+        </member>
+        <member name="M:Jotunn.Entities.CustomLocation.#ctor(SoftReferenceableAssets.SoftReference{UnityEngine.GameObject},System.Boolean,Jotunn.Configs.LocationConfig)">
+            <summary>
+                Custom location from a prefab with a <see cref="T:Jotunn.Configs.LocationConfig"/> attached. Using SoftReference system.
+            </summary>
+            <param name="softReferencePrefab">The exterior prefab for this custom location.</param>
             <param name="fixReference">If true references for <see cref="T:Jotunn.Entities.Mock`1"/> objects get resolved at runtime by Jötunn.</param>
             <param name="locationConfig">The <see cref="T:Jotunn.Configs.LocationConfig"/> for this custom location.</param>
         </member>
@@ -3147,6 +3228,12 @@
                 Theme name of this room.
             </summary>
         </member>
+        <member name="P:Jotunn.Entities.CustomRoom.SoftReference">
+            <summary>
+                Indicator if room is added from SoftReferenceableAssets.<br />
+                Used to delay mocking prefabs until DungeonGenerator loads the room.
+            </summary>
+        </member>
         <member name="P:Jotunn.Entities.CustomRoom.RoomData">
             <summary>
                 Associated <see cref="T:DungeonDB.RoomData"/> holding data used during generation.
@@ -3168,6 +3255,15 @@
                 Can fix references for <see cref="T:Jotunn.Entities.Mock`1"/>s.
             </summary>
             <param name="prefab">The prefab for this custom room.</param>
+            <param name="fixReference">If true references for <see cref="T:Jotunn.Entities.Mock`1"/> objects get resolved at runtime by Jötunn.</param>
+            <param name="roomConfig">The config for this custom room.</param>
+        </member>
+        <member name="M:Jotunn.Entities.CustomRoom.#ctor(SoftReferenceableAssets.SoftReference{UnityEngine.GameObject},System.Boolean,Jotunn.Configs.RoomConfig)">
+            <summary>
+                Custom room from a SoftReference prefab with a <see cref="T:Jotunn.Configs.RoomConfig"/> attached. Using SoftReference system.<br />
+                The prefab is not loaded until the DungeonGenerator needs it during generation.
+            </summary>
+            <param name="softReferencePrefab">A <see cref="T:SoftReferenceableAssets.SoftReference`1"/> to the room prefab registered in a SoftRef manifest.</param>
             <param name="fixReference">If true references for <see cref="T:Jotunn.Entities.Mock`1"/> objects get resolved at runtime by Jötunn.</param>
             <param name="roomConfig">The config for this custom room.</param>
         </member>
@@ -3253,7 +3349,7 @@
         </member>
         <member name="M:Jotunn.Entities.CustomRPC.Initiate">
             <summary>
-                Initiates a RPC exchange with the server by sending an empty package.
+                Initiates an RPC exchange with the server by sending an empty package.
             </summary>
         </member>
         <member name="M:Jotunn.Entities.CustomRPC.SendPackage(System.Int64,ZPackage)">
@@ -3458,7 +3554,7 @@
             </summary>
             <param name="name">Prefab name</param>
             <param name="amount">Amount</param>
-            <param name="recover">Whether the resource is returned after deconstruction</param>
+            <param name="recover">Whether the item is dropped after deconstructing a piece</param>
             <returns></returns>
         </member>
         <member name="M:Jotunn.Entities.MockRequirement.CreateArray(System.Collections.Generic.Dictionary{System.String,System.Int32},System.Boolean)">
@@ -3466,7 +3562,7 @@
                 Creates a mocked Piece.Requirement array
             </summary>
             <param name="requirements">List of prefab names and amounts</param>
-            <param name="recover">Whether the resources are returned after deconstruction</param>
+            <param name="recover">Whether the items are dropped after deconstructing a piece</param>
             <returns></returns>
         </member>
         <member name="T:Jotunn.ArrayExtensions">
@@ -3531,6 +3627,139 @@
             </summary>
             <param name="configurationEntry"></param>
             <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Jotunn.Extensions.ConfigFileExtensions">
+            <summary>
+                Extends ConfigFile with a convenience method to bind config entries with less boilerplate code 
+                and explicitly expose commonly used configuration manager attributes.
+            </summary>
+        </member>
+        <member name="M:Jotunn.Extensions.ConfigFileExtensions.GetOrderedSectionName(BepInEx.Configuration.ConfigFile,System.String)">
+            <summary>
+                Formats section name as "{sectionNumber} - {section}" based on how
+                many sections have been bound to this config.
+            </summary>
+            <param name="configFile"></param>
+            <param name="section"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Extensions.ConfigFileExtensions.GetSettingOrder(BepInEx.Configuration.ConfigFile,System.String)">
+            <summary>
+                Orders settings within a section.
+            </summary>
+            <param name="configFile"></param>
+            <param name="section"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Extensions.ConfigFileExtensions.BindConfigInOrder``1(BepInEx.Configuration.ConfigFile,System.String,System.String,``0,System.String,System.Boolean,System.Boolean,System.Boolean,BepInEx.Configuration.AcceptableValueBase,System.Action{BepInEx.Configuration.ConfigEntryBase},ConfigurationManagerAttributes)">
+            <summary>
+                Bind a new config entry to the config file and modify description to state whether the config entry is synced or not.
+            </summary>
+            <typeparam name="T">Type of the value the config entry holds.</typeparam>
+            <param name="configFile">Configuration file to bind the config entry to.</param>
+            <param name="section">Configuration file section to list the config entry in. Settings are grouped by this.</param>
+            <param name="key">Name of the setting.</param>
+            <param name="defaultValue">Default value of the config entry.</param>
+            <param name="description">Plain text description of the config entry to display as hover text in configuration manager.</param>
+            <param name="synced">Whether the config entry IsAdminOnly and should be synced with server.</param>
+            <param name="sectionOrder">Whether to number the section names using a prefix based on the order they are bound to the config file.</param>
+            <param name="settingOrder">Whether to order the settings in each section based on the order they are bound to the config file.</param>
+            <param name="acceptableValues">Acceptable values for config entry as an AcceptableValueRange, AcceptableValueList, or custom subclass.</param>
+            <param name="customDrawer">Custom setting editor (OnGUI code that replaces the default editor provided by ConfigurationManager).</param>
+            <param name="configAttributes">Config manager attributes for additional user specified functionality. Any fields of BindConfig will overwrite properties in configAttributes.</param>
+            <returns>ConfigEntry bound to the config file.</returns>
+        </member>
+        <member name="M:Jotunn.Extensions.ConfigFileExtensions.BindConfig``1(BepInEx.Configuration.ConfigFile,System.String,System.String,``0,System.String,System.Boolean,System.Nullable{System.Int32},BepInEx.Configuration.AcceptableValueBase,System.Action{BepInEx.Configuration.ConfigEntryBase},ConfigurationManagerAttributes)">
+            <summary>
+                Bind a new config entry to the config file and modify description to state whether the config entry is synced or not.
+            </summary>
+            <typeparam name="T">Type of the value the config entry holds.</typeparam>
+            <param name="configFile">Configuration file to bind the config entry to.</param>
+            <param name="section">Configuration file section to list the config entry in. Settings are grouped by this.</param>
+            <param name="key">Name of the setting.</param>
+            <param name="defaultValue">Default value of the config entry.</param>
+            <param name="description">Plain text description of the config entry to display as hover text in configuration manager.</param>
+            <param name="synced">Whether the config entry IsAdminOnly and should be synced with server.</param>
+            <param name="order">Order of the setting on the settings list relative to other settings in a category. 0 by default, higher number is higher on the list.</param>
+            <param name="acceptableValues">Acceptable values for config entry as an AcceptableValueRange, AcceptableValueList, or custom subclass.</param>
+            <param name="customDrawer">Custom setting editor (OnGUI code that replaces the default editor provided by ConfigurationManager).</param>
+            <param name="configAttributes">Config manager attributes for additional user specified functionality. Any fields of BindConfig will overwrite properties in configAttributes.</param>
+            <returns>ConfigEntry bound to the config file.</returns>
+        </member>
+        <member name="M:Jotunn.Extensions.ConfigFileExtensions.SetSaveOnConfigSet(BepInEx.Configuration.ConfigFile,System.Boolean)">
+            <summary>
+                Sets SaveOnConfigSet and returns the original value before this method was called.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Jotunn.Extensions.StringExtensions">
+            <summary>
+                Helper methods for strings
+            </summary>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.ContainsAny(System.String,System.String[])">
+            <summary>
+                Returns true if the string contains any of the substrings.
+            </summary>
+            <param name="str"></param>
+            <param name="substrings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.EndsWithAny(System.String,System.String[])">
+            <summary>
+                Returns true if the string ends with any one of the suffixes.
+            </summary>
+            <param name="str"></param>
+            <param name="suffixes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.StartsWithAny(System.String,System.String[])">
+            <summary>
+                Returns true if the string starts with any one of the prefixes.
+            </summary>
+            <param name="str"></param>
+            <param name="prefixes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.RemoveSuffix(System.String,System.String)">
+            <summary>
+                If the string ends with the suffix then return a copy of the string
+                with the suffix stripped, otherwise return the original string.
+            </summary>
+            <param name="s"></param>
+            <param name="suffix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.RemovePrefix(System.String,System.String)">
+            <summary>
+                If the string starts with the prefix then return a copy of the string
+                with the prefix stripped, otherwise return the original string.
+            </summary>
+            <param name="s"></param>
+            <param name="prefix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Extensions.StringExtensions.CapitalizeFirstLetter(System.String)">
+            <summary>
+                Returns a copy of the string with the first character capitalized
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Jotunn.Extensions.TransformExtensions">
+            <summary>
+                Convenience methods for Transforms
+            </summary>
+        </member>
+        <member name="M:Jotunn.Extensions.TransformExtensions.FindDeepChild(UnityEngine.Transform,System.String,Utils.IterativeSearchType)">
+            <summary>
+                Extension method to find nested children by name using either
+                a breadth-first or depth-first search. Default is breadth-first.
+            </summary>
+            <param name="transform"></param>
+            <param name="childName">Name of the child object to search for.</param>
+            <param name="searchType">Whether to preform a breadth first or depth first search. Default is breadth first.</param>
             <returns></returns>
         </member>
         <member name="T:Jotunn.EventExtensions">
@@ -3779,6 +4008,14 @@
             <param name="gameObject">This GameObject</param>
             <param name="recursive">Traverse all child transforms</param>
         </member>
+        <member name="M:Jotunn.PrefabExtension.FixReferencesInternal(UnityEngine.GameObject,System.Boolean)">
+            <summary>
+                Resolves all references for mocks in this GameObject recursively.
+                Can additionally traverse the transforms hierarchy to fix child GameObjects recursively.
+            </summary>
+            <param name="gameObject">This GameObject</param>
+            <param name="recursive">Traverse all child transforms</param>
+        </member>
         <member name="M:Jotunn.PrefabExtension.CloneFields(UnityEngine.GameObject,UnityEngine.GameObject)">
             <summary>
                 Clones all fields from this GameObject to objectToClone.
@@ -3818,75 +4055,6 @@
                 Calculate the world rect of a RectTransform
             </summary>
             <param name="rectTransform"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Jotunn.Extensions.StringExtensions">
-            <summary>
-                Helper methods for strings
-            </summary>
-        </member>
-        <member name="M:Jotunn.Extensions.StringExtensions.ContainsAny(System.String,System.String[])">
-            <summary>
-                Returns true if the string contains any of the substrings.
-            </summary>
-            <param name="str"></param>
-            <param name="substrings"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Jotunn.Extensions.StringExtensions.EndsWithAny(System.String,System.String[])">
-            <summary>
-                Returns true if the string ends with any one of the suffixes.
-            </summary>
-            <param name="str"></param>
-            <param name="suffixes"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Jotunn.Extensions.StringExtensions.StartsWithAny(System.String,System.String[])">
-            <summary>
-                Returns true if the string starts with any one of the prefixes.
-            </summary>
-            <param name="str"></param>
-            <param name="prefixes"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Jotunn.Extensions.StringExtensions.RemoveSuffix(System.String,System.String)">
-            <summary>
-                If the string ends with the suffix then return a copy of the string
-                with the suffix stripped, otherwise return the original string.
-            </summary>
-            <param name="s"></param>
-            <param name="suffix"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Jotunn.Extensions.StringExtensions.RemovePrefix(System.String,System.String)">
-            <summary>
-                If the string starts with the prefix then return a copy of the string
-                with the prefix stripped, otherwise return the original string.
-            </summary>
-            <param name="s"></param>
-            <param name="prefix"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Jotunn.Extensions.StringExtensions.CapitalizeFirstLetter(System.String)">
-            <summary>
-                Returns a copy of the string with the first character capitalized
-            </summary>
-            <param name="s"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Jotunn.Extensions.TransformExtensions">
-            <summary>
-                Convenience methods for Transforms
-            </summary>
-        </member>
-        <member name="M:Jotunn.Extensions.TransformExtensions.FindDeepChild(UnityEngine.Transform,System.String,Utils.IterativeSearchType)">
-            <summary>
-                Extension method to find nested children by name using either
-                a breadth-first or depth-first search. Default is breadth-first.
-            </summary>
-            <param name="transform"></param>
-            <param name="childName">Name of the child object to search for.</param>
-            <param name="searchType">Whether to preform a breadth first or depth first search. Default is breadth first.</param>
             <returns></returns>
         </member>
         <member name="T:Jotunn.ZNetExtension">
@@ -4097,6 +4265,11 @@
                 The singleton instance of this manager.
             </summary>
         </member>
+        <member name="E:Jotunn.Managers.AssetManager.OnSoftReferenceableAssetsReady">
+            <summary>
+                Event that is invoked when the soft referenceable system is ready to be used.
+            </summary>
+        </member>
         <member name="M:Jotunn.Managers.AssetManager.#ctor">
             <summary>
                 Hide .ctor
@@ -4127,9 +4300,51 @@
             <param name="asset">The asset to register</param>
             <returns>AssetID generated from the prefab's name</returns>
         </member>
+        <member name="M:Jotunn.Managers.AssetManager.ResolveMocksOnLoad(SoftReferenceableAssets.AssetID)">
+            <summary>
+                Registers an asset to be instantiated and have its mock references resolved on load.<br/>
+                Must be called before the asset is loaded the first time.
+            </summary>
+            <param name="assetID">The <see cref="T:SoftReferenceableAssets.AssetID"/> of the asset to instantiate and resolve mocks for on load</param>
+        </member>
+        <member name="M:Jotunn.Managers.AssetManager.ResolveMocksOnLoad(SoftReferenceableAssets.AssetID,UnityEngine.Transform)">
+            <summary>
+                Registers an asset to be instantiated under the given parent and have its mock references resolved on load.<br/>
+                Must be called before the asset is loaded the first time.
+            </summary>
+            <param name="assetID">The <see cref="T:SoftReferenceableAssets.AssetID"/> of the asset to instantiate and resolve mocks for on load</param>
+            <param name="parent">Optional transform under which the asset will be instantiated, otherwise a default container is used</param>
+        </member>
+        <member name="M:Jotunn.Managers.AssetManager.ResolveMocksOnLoad``1(SoftReferenceableAssets.SoftReference{``0},UnityEngine.Transform,System.Action{``0})">
+            <summary>
+                Registers an asset to be instantiated under the given parent and have its mock references resolved on load.<br/>
+                Must be called before the asset is loaded the first time.<br/>
+                The callback will be invoked when the asset is already resolved and instantiated. Multiple callbacks can be registed for the same asset.<br/>
+            </summary>
+            <param name="softReference">The <see cref="T:SoftReferenceableAssets.SoftReference`1"/> to instantiate and resolve mocks for on load</param>
+            <param name="parent">Optional transform under which the asset will be instantiated, otherwise a default container is used</param>
+            <param name="resolveCallback">Adds a callback when the asset was resolved and instantiated</param>
+        </member>
+        <member name="M:Jotunn.Managers.AssetManager.ResolveMocksOnLoad(SoftReferenceableAssets.AssetID,UnityEngine.Transform,System.Action{UnityEngine.Object})">
+            <summary>
+                Registers an asset to be instantiated under the given parent and have its mock references resolved on load.<br/>
+                Must be called before the asset is loaded the first time.<br/>
+                The callback will be invoked when the asset is already resolved and instantiated. Multiple callbacks can be registed for the same asset.<br/>
+            </summary>
+            <param name="assetID">The <see cref="T:SoftReferenceableAssets.AssetID"/> of the asset to instantiate and resolve mocks for on load</param>
+            <param name="parent">Optional transform under which the asset will be instantiated, otherwise a default container is used</param>
+            <param name="resolveCallback">Adds a callback when the asset was resolved and instantiated</param>
+        </member>
         <member name="M:Jotunn.Managers.AssetManager.GenerateAssetID(UnityEngine.Object)">
             <summary>
                 Generates a unique AssetID, based on the asset name
+            </summary>
+            <param name="asset"></param>
+            <returns>AssetID generated from the prefab's name</returns>
+        </member>
+        <member name="M:Jotunn.Managers.AssetManager.GenerateAssetID(System.String)">
+            <summary>
+                Generates a unique AssetID, from a given string
             </summary>
             <param name="asset"></param>
             <returns>AssetID generated from the prefab's name</returns>
@@ -4541,6 +4756,16 @@
                 Valheim's rune-like font, bold faced.
             </summary>
         </member>
+        <member name="P:Jotunn.Managers.GUIManager.TMP_AveriaSansLibre">
+            <summary>
+                Valheim's standard font as a TMPro FontAsset
+            </summary>
+        </member>
+        <member name="P:Jotunn.Managers.GUIManager.TMP_Norse">
+            <summary>
+                Valheim's rune-like font as a TMPro FontAsset
+            </summary>
+        </member>
         <member name="F:Jotunn.Managers.GUIManager.ValheimControlResources">
             <summary>
                 <see cref="T:UnityEngine.UI.DefaultControls.Resources"/> with default Valheim assets.
@@ -4610,10 +4835,12 @@
                 Load GUI assets on first start
             </summary>
         </member>
-        <member name="M:Jotunn.Managers.GUIManager.CreateCustomGUI(UnityEngine.Transform)">
+        <member name="M:Jotunn.Managers.GUIManager.CreateCustomGUI(System.String,System.Int32,UnityEngine.Transform)">
             <summary>
                 Create GameObjects for mods to append their custom GUI to
             </summary>
+            <param name="name"></param>
+            <param name="sortingOrder"></param>
             <param name="parent"></param>
         </member>
         <member name="M:Jotunn.Managers.GUIManager.AddKeyHint(Jotunn.Configs.KeyHintConfig)">
@@ -5890,50 +6117,6 @@
             <param name="material"></param>
             <returns>true if no mock was found or the mock could be resolved</returns>
         </member>
-        <member name="T:Jotunn.Managers.MockSystem.MockResolveException">
-            <summary>
-                Exception that is thrown for a mock prefab, that could not be resolved to a real prefab.
-            </summary>
-        </member>
-        <member name="P:Jotunn.Managers.MockSystem.MockResolveException.FailedMockName">
-            <summary>
-                Name of the prefab that could not be resolved. Mock prefix is already removed.
-            </summary>
-        </member>
-        <member name="P:Jotunn.Managers.MockSystem.MockResolveException.FailedMockPath">
-            <summary>
-                Path within the prefab that could not be resolved.
-            </summary>
-        </member>
-        <member name="P:Jotunn.Managers.MockSystem.MockResolveException.MockType">
-            <summary>
-                Type of the prefab that could not be resolved.
-            </summary>
-        </member>
-        <member name="M:Jotunn.Managers.MockSystem.MockResolveException.#ctor(System.String,System.String)">
-            <summary>
-                Creates a new instance of the <see cref="T:Jotunn.Managers.MockSystem.MockResolveException" /> class.
-            </summary>
-            <param name="message"></param>
-            <param name="failedMockName"></param>
-        </member>
-        <member name="M:Jotunn.Managers.MockSystem.MockResolveException.#ctor(System.String,System.String,System.Type)">
-            <summary>
-                Creates a new instance of the <see cref="T:Jotunn.Managers.MockSystem.MockResolveException" /> class.
-            </summary>
-            <param name="message"></param>
-            <param name="failedMockName"></param>
-            <param name="mockType"></param>
-        </member>
-        <member name="M:Jotunn.Managers.MockSystem.MockResolveException.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type)">
-            <summary>
-                Creates a new instance of the <see cref="T:Jotunn.Managers.MockSystem.MockResolveException" /> class.
-            </summary>
-            <param name="message"></param>
-            <param name="failedMockName"></param>
-            <param name="failedMockPath"></param>
-            <param name="mockType"></param>
-        </member>
         <member name="T:Jotunn.Managers.NetworkManager">
             <summary>
                 Manager handling all network related code
@@ -6713,26 +6896,34 @@
             <param name="rpc">RPC to be called</param>
             <param name="packageGenerator">Method generating the ZPackage payload</param>
         </member>
-        <member name="M:Jotunn.Managers.SynchronizationManager.SceneManager_sceneLoaded(UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)">
+        <member name="M:Jotunn.Managers.SynchronizationManager.Patches.GetCachedValueForSyncedConfigs(BepInEx.Configuration.ConfigEntryBase,System.String@)">
             <summary>
-                Init or reset admin and configuration state
+                Harmony patch BepInEx to ensure locked values are not overwritten.
+                Return the cached local value of a bep config thats locked
             </summary>
-            <param name="scene"></param>
-            <param name="loadMode"></param>
+        </member>
+        <member name="M:Jotunn.Managers.SynchronizationManager.Patches.BlockSetForSyncedConfigs(BepInEx.Configuration.ConfigEntryBase)">
+            <summary>
+                Harmony patch BepInEx to ensure locked values are not overwritten.
+                Prevent overwriting bep config value when the setting is locked on config file reload.
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.SynchronizationManager.InitAdminConfigs">
+            <summary>
+                Cache local config values for synced entries.
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.SynchronizationManager.ResetAdminConfigs(ZNet)">
+            <summary>
+                Reset configs which may have been overwritten with server values to the local value
+                if this machine is not the server.
+            </summary>
         </member>
         <member name="M:Jotunn.Managers.SynchronizationManager.ZNet_Awake(ZNet)">
             <summary>
                 Hook <see cref="M:ZNet.Awake"/> to start a watchdog Coroutine which monitors the admin list.
             </summary>
             <param name="self"></param>
-        </member>
-        <member name="M:Jotunn.Managers.SynchronizationManager.ZNet_RPC_Pre_PeerInfo(ZNet,ZRpc,Jotunn.Managers.SynchronizationManager.PeerInfoBlockingSocket@)">
-            <summary>
-                Hook ZNet.RPC_PeerInfo on the server to send initial data
-            </summary>
-            <param name="self"></param>
-            <param name="rpc"></param>
-            <param name="__state"></param>
         </member>
         <member name="M:Jotunn.Managers.SynchronizationManager.SyncedList_Save(SyncedList)">
             <summary>
@@ -6764,6 +6955,44 @@
                 Safely invoke the <see cref="E:Jotunn.Managers.SynchronizationManager.OnAdminStatusChanged"/> event
             </summary>
         </member>
+        <member name="M:Jotunn.Managers.SynchronizationManager.GetConfigFiles">
+            <summary>
+                Gets an IEnumerable of all default and custom config files that associated with plugins that have Jotunn as a dependency.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Managers.SynchronizationManager.ShouldManageConfig(BepInEx.Configuration.ConfigFile)">
+            <summary>
+                Checks if AdminOnly config entries should be locked based the AdminOnlyStrictness value for the plugin that the
+                config file is attached to (including custom config files) and whether the plugin is installed on the server or not.
+            </summary>
+            <param name="config"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Managers.SynchronizationManager.ShouldManageConfig(BepInEx.BaseUnityPlugin)">
+            <summary>
+                Checks if AdminOnly config entries should be locked based the AdminOnlyStrictness value for the plugin
+                and whether the plugin is installed on the server or not.
+            </summary>
+            <param name="plugin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Managers.SynchronizationManager.GetPluginGUID(BepInEx.Configuration.ConfigFile,System.String@)">
+            <summary>
+                Gets the corresponding Plugin GUID for a config file (works for custom config files) 
+                and returns a boolean indicating success or failure.
+            </summary>
+            <param name="config"></param>
+            <param name="pluginGUID"></param>
+        </member>
+        <member name="M:Jotunn.Managers.SynchronizationManager.GetPluginGUID(System.String,System.String@)">
+            <summary>
+                Gets the corresponding Plugin GUID for a config file identifier (works for custom config files) 
+                and returns a boolean indicating success or failure.
+            </summary>
+            <param name="configFileIdentifier"></param>
+            <param name="pluginGUID"></param>
+        </member>
         <member name="M:Jotunn.Managers.SynchronizationManager.UnlockConfigurationEntries">
             <summary>
                 Unlock configuration entries.
@@ -6793,9 +7022,14 @@
                 Safely invoke the <see cref="E:Jotunn.Managers.SynchronizationManager.OnConfigurationWindowClosed"/> event
             </summary>
         </member>
-        <member name="M:Jotunn.Managers.SynchronizationManager.FejdStartup_Awake">
+        <member name="M:Jotunn.Managers.SynchronizationManager.SubscribeToConfigReload">
             <summary>
-                Initial cache the config values of dependent plugins and register ourself to config change events
+                Register ourself to config reload events to trigger synchronizing configs
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.SynchronizationManager.UnsubscribeToConfigReload">
+            <summary>
+                Un-Register ourself to config reload events to trigger synchronizing configs
             </summary>
         </member>
         <member name="M:Jotunn.Managers.SynchronizationManager.Config_ConfigReloaded(System.Object,System.EventArgs)">
@@ -6810,14 +7044,14 @@
                 Return the cached local value of a bep config thats locked
             </summary>
         </member>
-        <member name="M:Jotunn.Managers.SynchronizationManager.ConfigEntryBase_SetSerializedValue(BepInEx.Configuration.ConfigEntryBase,System.String)">
+        <member name="M:Jotunn.Managers.SynchronizationManager.ConfigEntryBase_SetSerializedValue(BepInEx.Configuration.ConfigEntryBase)">
             <summary>
                 Prevent overwriting bep config value when the setting is locked on config file reload
             </summary>
         </member>
         <member name="M:Jotunn.Managers.SynchronizationManager.CacheConfigurationValues">
             <summary>
-                Cache the synchronizable configuration values for comparison
+                Cache the current synchronizable configuration values for comparison
             </summary>
         </member>
         <member name="M:Jotunn.Managers.SynchronizationManager.GetSyncConfigValues">
@@ -6829,16 +7063,6 @@
         <member name="M:Jotunn.Managers.SynchronizationManager.SynchronizeChangedConfig">
             <summary>
                 Syncs the changed configuration of a client to the server
-            </summary>
-        </member>
-        <member name="M:Jotunn.Managers.SynchronizationManager.InitAdminConfigs">
-            <summary>
-                Cache local config values for synced entries
-            </summary>
-        </member>
-        <member name="M:Jotunn.Managers.SynchronizationManager.ResetAdminConfigs">
-            <summary>
-                Reset configs which may have been overwritten with server values to the local value
             </summary>
         </member>
         <member name="M:Jotunn.Managers.SynchronizationManager.InvokeOnConfigurationSynchronized(System.Boolean,System.Collections.Generic.HashSet{System.String})">
@@ -6867,9 +7091,9 @@
             <param name="values">List of config tuples to include in the package</param>
             <returns></returns>
         </member>
-        <member name="T:Jotunn.Managers.SynchronizationManager.PeerInfoBlockingSocket">
+        <member name="T:Jotunn.Managers.SynchronizationManager.SocketBuffer">
             <summary>
-                Wrapper Socket which holds up and preserves PeerInfo or RoutedRPC packages until
+                Holds up and preserves PeerInfo or RoutedRPC packages until
                 the finished member is set to true. All other packages get sent. This will
                 stop the client from completing the login handshake with the server until ready.
             </summary>
@@ -7249,13 +7473,50 @@
             </summary>
             <param name="zoneLocation"><see cref="T:ZoneSystem.ZoneLocation"/> to add to the <see cref="T:ZoneSystem"/></param>
         </member>
-        <member name="M:Jotunn.Managers.ZoneManager.RegisterLocationInZoneSystem(ZoneSystem,ZoneSystem.ZoneLocation,BepInEx.BepInPlugin)">
+        <member name="T:Jotunn.MockResolveFailure">
             <summary>
-                Internal method for adding a ZoneLocation to a specific ZoneSystem.
+                Failure that is tracked for a mock prefab which could not be resolved to a real prefab or other type.
             </summary>
-            <param name="zoneSystem"><see cref="T:ZoneSystem"/> the location should be added to</param>
-            <param name="zoneLocation"><see cref="T:ZoneSystem.ZoneLocation"/> to add</param>
-            <param name="sourceMod"><see cref="T:BepInEx.BepInPlugin"/> which created the location</param>
+        </member>
+        <member name="P:Jotunn.MockResolveFailure.MockResolveFailures">
+            <summary>
+                Accumulated list of the tracked MockResolveFailure.
+            </summary>
+        </member>
+        <member name="M:Jotunn.MockResolveFailure.#ctor(System.String,System.String,System.String,System.Type)">
+            <summary>
+                Creates a new instance of the <see cref="T:Jotunn.MockResolveFailure" /> class.
+            </summary>
+        </member>
+        <member name="M:Jotunn.MockResolveFailure.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type)">
+            <summary>
+                Creates a new instance of the <see cref="T:Jotunn.MockResolveFailure" /> class.
+            </summary>
+        </member>
+        <member name="P:Jotunn.MockResolveFailure.Message">
+            <summary>
+                Additional message to display when printing warnings.
+            </summary>
+        </member>
+        <member name="P:Jotunn.MockResolveFailure.FailedMockName">
+            <summary>
+                Name of the type that could not be resolved. Mock prefix is already removed.
+            </summary>
+        </member>
+        <member name="P:Jotunn.MockResolveFailure.FailedMockPath">
+            <summary>
+                Path within the prefab that could not be resolved.
+            </summary>
+        </member>
+        <member name="P:Jotunn.MockResolveFailure.MockType">
+            <summary>
+                Type of the prefab that could not be resolved.
+            </summary>
+        </member>
+        <member name="M:Jotunn.MockResolveFailure.PrintMockResolveFailures(System.String)">
+            <summary>
+                Prints warning messages for all the tracked MockResolveFailure.
+            </summary>
         </member>
         <member name="T:Jotunn.GUI.ColorPicker">
             <summary>
@@ -7681,6 +7942,12 @@
                 Path separator for AssetBundles
             </summary>
         </member>
+        <member name="P:Jotunn.Utils.AssetUtils.LoadImageMethod">
+            <summary>
+                Method reference to <see cref="M:UnityEngine.ImageConversion.LoadImage(UnityEngine.Texture2D,System.Byte[])" />.
+                Workaround for compiling a net 4.x mod against the nestandard 2.1 method reference.
+            </summary>
+        </member>
         <member name="M:Jotunn.Utils.AssetUtils.LoadTexture(System.String,System.Boolean)">
             <summary>
                 Loads a <see cref="T:UnityEngine.Texture2D"/> from file at runtime.
@@ -7688,6 +7955,53 @@
             <param name="texturePath">Texture path relative to "plugins" BepInEx folder</param>
             <param name="relativePath">Is the given path relative</param>
             <returns>Texture2D loaded, or null if invalid path</returns>
+        </member>
+        <member name="M:Jotunn.Utils.AssetUtils.LoadImage(System.Byte[])">
+            <summary>
+                Wrapper for https://docs.unity3d.com/ScriptReference/ImageConversion.LoadImage.html,
+                creates a new <see cref="T:UnityEngine.Texture2D"/>.
+            </summary>
+            <param name="data">The byte array containing the image data to load.</param>
+            <returns>A new texture with the loaded image if the data can be loaded, null otherwise</returns>
+        </member>
+        <member name="M:Jotunn.Utils.AssetUtils.LoadImage(UnityEngine.Texture2D,System.Byte[])">
+            <summary>
+                Wrapper for https://docs.unity3d.com/ScriptReference/ImageConversion.LoadImage.html.
+            </summary>
+            <param name="texture">The texture to load the image into.</param>
+            <param name="data">The byte array containing the image data to load.</param>
+            <returns>true if the data can be loaded, false otherwise</returns>
+        </member>
+        <member name="M:Jotunn.Utils.AssetUtils.DuplicateTexture(UnityEngine.Texture2D,UnityEngine.Rect)">
+            <summary>
+                Creates a readable copy of a rectangular region from a <see cref="T:UnityEngine.Texture2D"/>.
+            </summary>
+            <param name="texture">Source texture.</param>
+            <param name="textureRect">Region of the texture to copy.</param>
+            <returns>A readable <see cref="T:UnityEngine.Texture2D"/> of the specified region, or null if the texture is null.</returns>
+        </member>
+        <member name="M:Jotunn.Utils.AssetUtils.DuplicateTexture(UnityEngine.Texture2D)">
+            <summary>
+                Creates a readable copy of a <see cref="T:UnityEngine.Texture2D"/>.
+            </summary>
+            <param name="texture">Source texture.</param>
+            <returns>A readable copy of the texture, or null if the texture is null.</returns>
+        </member>
+        <member name="M:Jotunn.Utils.AssetUtils.DuplicateTexture(UnityEngine.Sprite)">
+            <summary>
+                Creates a readable copy of a <see cref="T:UnityEngine.Sprite"/>'s texture region.
+                If the sprite is part of an atlas, only its texture rectangle is copied.<br/>
+                Use <c>AssetUtils.DuplicateTexture(sprite.texture)</c> to copy the full texture.
+            </summary>
+            <param name="sprite">Source sprite.</param>
+            <returns>A readable <see cref="T:UnityEngine.Texture2D"/> of the sprite’s texture region, or null if the texture is null.</returns>
+        </member>
+        <member name="M:Jotunn.Utils.AssetUtils.DuplicateSprite(UnityEngine.Sprite)">
+            <summary>
+                Creates a readable copy of a <see cref="T:UnityEngine.Sprite"/>.
+            </summary>
+            <param name="sprite">Source sprite.</param>
+            <returns>A new <see cref="T:UnityEngine.Sprite"/> with a readable copy of its texture region, or null if the texture is null.</returns>
         </member>
         <member name="M:Jotunn.Utils.AssetUtils.LoadSpriteFromFile(System.String)">
             <summary>
@@ -7866,6 +8180,35 @@
             <param name="transform"></param>
             <param name="name"></param>
             <returns></returns>
+        </member>
+        <member name="T:Jotunn.Utils.ConfigFileWatcher">
+            <summary>
+                Watches a <see cref="T:BepInEx.Configuration.ConfigFile"/> for changes and raises events when the configuration file is modified.
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.ConfigFileWatcher.#ctor(BepInEx.Configuration.ConfigFile,System.Int64)">
+            <summary>
+                Create a file watcher to trigger reloads of the config file when it is changed, created, or renamed.
+            </summary>
+            <param name="configFile"></param>
+            <param name="reloadDelay">Time in milliseconds before another event can be fired.</param>
+        </member>
+        <member name="E:Jotunn.Utils.ConfigFileWatcher.OnConfigFileReloaded">
+            <summary>
+                Event triggered after the file watcher reloads the configuration file.
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.ConfigFileWatcher.InvokeOnConfigFileReloaded">
+            <summary>
+                Safely invoke the <see cref="E:Jotunn.Utils.ConfigFileWatcher.OnConfigFileReloaded"/> event
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.ConfigFileWatcher.ReloadConfigFile(System.Object,System.IO.FileSystemEventArgs)">
+            <summary>
+                Reloads config file if and only if the last write time differs from the last read time.
+            </summary>
+            <param name="sender"></param>
+            <param name="eventArgs"></param>
         </member>
         <member name="T:Jotunn.Utils.ConfigManagerUtils">
             <summary>
@@ -8231,10 +8574,33 @@
                 Implementation of the mod compatibility features.
             </summary>
         </member>
-        <member name="F:Jotunn.Utils.ModCompatibility.LastServerVersion">
+        <member name="F:Jotunn.Utils.ModCompatibility.LastServerVersionData">
             <summary>
                 Stores the last server message.
             </summary>
+        </member>
+        <member name="M:Jotunn.Utils.ModCompatibility.IsModuleOnServer(BepInEx.BaseUnityPlugin)">
+            <summary>
+                Check if a mod is installed and loaded on the server.<br/>
+                Can be called from both client and server.
+            </summary>
+            <param name="plugin">BepInEx mod to check</param>
+            <returns>true if the mod is loaded on the server.<br/>false if the mod is not loaded on the server or no server connection is established</returns>
+        </member>
+        <member name="M:Jotunn.Utils.ModCompatibility.IsModuleOnServer(System.String)">
+            <summary>
+                Check if a mod is installed and loaded on the server.<br/>
+                Can be called from both client and server.
+            </summary>
+            <param name="modGUID">BepInEx mod GUID to check</param>
+            <returns>true if the mod is loaded on the server.<br/>false if the mod is not loaded on the server or no server connection is established</returns>
+        </member>
+        <member name="M:Jotunn.Utils.ModCompatibility.IsJotunnOnServer">
+            <summary>
+                Check if Jotunn is installed and loaded on the server.<br/>
+                Can be called from both client and server.
+            </summary>
+            <returns>true if Jotunn is loaded on the server.<br/>false if Jotunn is not loaded on the server or no server connection is established</returns>
         </member>
         <member name="M:Jotunn.Utils.ModCompatibility.RPC_Jotunn_ReceiveVersionData(ZRpc,ZPackage)">
             <summary>
@@ -8242,6 +8608,14 @@
             </summary>
             <param name="sender"></param>
             <param name="data"></param>
+        </member>
+        <member name="M:Jotunn.Utils.ModCompatibility.CompareVersionData(Jotunn.Utils.ModuleVersionData,Jotunn.Utils.ModuleVersionData)">
+            <summary>
+                Compares version data on server and client.
+            </summary>
+            <param name="serverData"></param>
+            <param name="clientData"></param>
+            <returns></returns>
         </member>
         <member name="M:Jotunn.Utils.ModCompatibility.ShowModCompatibilityErrorMessage(System.String)">
             <summary>
@@ -8261,6 +8635,49 @@
                 Get module.
             </summary>
             <returns></returns>
+        </member>
+        <member name="P:Jotunn.Utils.ModModule.DataLayoutVersion">
+            <summary>
+                DataLayoutVersion indicates the version layout of data within the ZPkg. If equal to 0 then it is a legacy format.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Utils.ModModule.ModID">
+            <summary>
+                Identifier for mod based on DataLayoutVersion. 
+                For legacy layout returns mod name, otherwise returns mod GUID. 
+            </summary>
+        </member>
+        <member name="P:Jotunn.Utils.ModModule.ModName">
+            <summary>
+                Friendly version of mod name.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Utils.ModModule.Version">
+            <summary>
+                Version data for mod.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Utils.ModModule.CompatibilityLevel">
+            <summary>
+                Compatibility level of the mod.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Utils.ModModule.VersionStrictness">
+            <summary>
+                Version strictness level of the mod.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Utils.ModModule.IsLegacyDataLayout">
+            <summary>
+                Whether the data layout is a legacy format or not.
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.ModModule.WriteToPackage(ZPackage,System.Boolean)">
+            <summary>
+                Write to ZPkg
+            </summary>
+            <param name="pkg"></param>
+            <param name="legacy"></param>
         </member>
         <member name="M:Jotunn.Utils.ModModule.IsNeededOnServer">
             <summary>
@@ -8286,6 +8703,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Jotunn.Utils.ModModule.IsSupportedDataLayout">
+            <summary>
+                Module is formatted as in one of the supported data layout versions. 
+                Should return false is data was received from a newer version of Jotunn.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Jotunn.Utils.ModModule.IsLowerVersion(Jotunn.Utils.ModModule,Jotunn.Utils.ModModule,Jotunn.Utils.VersionStrictness)">
             <summary>
                 Checks if the compare module has a lower version then the other base module
@@ -8308,6 +8732,12 @@
         <member name="P:Jotunn.Utils.ModuleVersionData.Modules">
             <summary>
                 Module data
+            </summary>
+        </member>
+        <member name="P:Jotunn.Utils.ModuleVersionData.IsSupportedDataLayout">
+            <summary>
+                Whether all the ModModule instances were formatted in a supported 
+                data layout and all instances had the same data layout. 
             </summary>
         </member>
         <member name="M:Jotunn.Utils.ModuleVersionData.#ctor(System.Collections.Generic.List{Jotunn.Utils.ModModule})">
@@ -8401,13 +8831,11 @@
         </member>
         <member name="T:Jotunn.Utils.NetworkCompatibilityAttribute">
             <summary>
-            Mod compatibility attribute<br />
-            <br/>
-            PLEASE READ<br />
-            Example usage:<br />
-            If your mod adds its own RPCs, EnforceModOnClients is likely a must (otherwise clients would just discard the messages from the server), same version you do have to determine, if your sent data changed<br />
-            If your mod adds items, you always should enforce mods on client and same version (there could be nasty side effects with different versions of an item)<br />
-            If your mod is just GUI changes (for example bigger inventory, additional equip slots) there is no need to set this attribute
+                Mod compatibility attribute<br />
+                <br/>
+                If your mod adds its own RPCs, EnforceModOnClients is likely a must (otherwise clients would just discard the messages from the server), same version you do have to determine, if your sent data changed.<br />
+                If your mod adds items, you always should enforce mods on client and same version (there could be nasty side effects with different versions of an item).<br />
+                If your mod is just GUI changes (for example bigger inventory, additional equip slots) there is no need to set this attribute
             </summary>
         </member>
         <member name="P:Jotunn.Utils.NetworkCompatibilityAttribute.EnforceModOnClients">
@@ -8426,6 +8854,63 @@
             </summary>
             <param name="enforceMod"></param>
             <param name="enforceVersion"></param>
+        </member>
+        <member name="M:Jotunn.Utils.ServerVersionData.#ctor">
+            <summary>
+                Create empty ServerData
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.ServerVersionData.#ctor(System.Collections.Generic.List{Jotunn.Utils.ModModule})">
+            <summary>
+                Create from module data
+            </summary>
+            <param name="versionData"></param>
+        </member>
+        <member name="M:Jotunn.Utils.ServerVersionData.#ctor(ZPackage)">
+            <summary>
+                Create from ZPackage
+            </summary>
+            <param name="pkg"></param>
+        </member>
+        <member name="T:Jotunn.Utils.AdminOnlyStrictness">
+            <summary>
+                Enum used for telling whether AdminOnly settings for Config Entries should always be enforced
+                or if they should only be enforced when the mod is installed on the server.
+            </summary>
+        </member>
+        <member name="F:Jotunn.Utils.AdminOnlyStrictness.Always">
+            <summary>
+                AdminOnly is always enforced for Config Entries even if the mod is not installed on the server.
+                This means that AdminOnly configs cannot be edited in multiplayer if the mod is not on the server.
+            </summary>
+        </member>
+        <member name="F:Jotunn.Utils.AdminOnlyStrictness.IfOnServer">
+            <summary>
+                AdminOnly is only enforced for Config Entries if the mod is installed on the server.
+            </summary>
+        </member>
+        <member name="T:Jotunn.Utils.SynchronizationModeAttribute">
+            <summary>
+                This attribute is used to determine how Jotunn should enforce synchronization of Config Entries.<br/>
+                Only relevant for Config Entries that have the <see cref="P:ConfigurationManagerAttributes.IsAdminOnly"/> applied.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Utils.SynchronizationModeAttribute.EnforceAdminOnly">
+            <summary>
+                AdminOnly ConfigEntry Strictness
+            </summary>
+        </member>
+        <member name="M:Jotunn.Utils.SynchronizationModeAttribute.#ctor(Jotunn.Utils.AdminOnlyStrictness)">
+            <summary>
+                Synchronization mode Attribute
+            </summary>
+            <param name="enforceAdminOnly"></param>
+        </member>
+        <member name="M:Jotunn.Utils.SynchronizationModeAttribute.ShouldAlwaysEnforceAdminOnly">
+            <summary>
+                Check if AdminOnly Config Entries should always be locked if player is not an admin.
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Jotunn.Utils.ModQuery">
             <summary>
