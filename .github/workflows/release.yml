@@ -1,5 +1,10 @@
 name: Release
 
+concurrency:
+  # Cancel in-progress jobs or runs for the current workflow when new runs are enqueued
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   workflow_dispatch:
 
