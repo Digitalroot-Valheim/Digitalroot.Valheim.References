@@ -21,12 +21,12 @@
     <Company>Digitalroot Technologies</Company>
     <Product>Digitalroot Unity References</Product>
     <Description>References for Valheim's version of Unity</Description>
-    <PackageReleaseNotes>Update to Unity 6000.0.61f1</PackageReleaseNotes>
+    <PackageReleaseNotes>Update to Unity 6000.0.75f1</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <NoBuild>false</NoBuild>
-    <Version>6000.0.61</Version>
+    <Version>6000.0.75</Version>
     <RestoreAdditionalProjectSources>
       https://api.nuget.org/v3/index.json;
       https://nuget.bepinex.dev/v3/index.json;
