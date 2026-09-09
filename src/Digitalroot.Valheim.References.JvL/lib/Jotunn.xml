@@ -8277,17 +8277,17 @@
                 Check for variant changes and pass the variant to AttachArmor
             </summary>
         </member>
-        <member name="M:Jotunn.Utils.ExtEquipment.VisEquipment_SetRightItem(VisEquipment,System.String)">
+        <member name="M:Jotunn.Utils.ExtEquipment.VisEquipment_SetRightItem(VisEquipment,System.Int32)">
             <summary>
                 Store the variant index of the right hand item to the ZDO if the variant has changed
             </summary>
         </member>
-        <member name="M:Jotunn.Utils.ExtEquipment.VisEquipment_SetRightBackItem(VisEquipment,System.String)">
+        <member name="M:Jotunn.Utils.ExtEquipment.VisEquipment_SetRightBackItem(VisEquipment,System.Int32)">
             <summary>
                 Store the variant index of the right back item to the ZDO if the variant has changed
             </summary>
         </member>
-        <member name="M:Jotunn.Utils.ExtEquipment.VisEquipment_SetChestItem(VisEquipment,System.String)">
+        <member name="M:Jotunn.Utils.ExtEquipment.VisEquipment_SetChestItem(VisEquipment,System.Int32)">
             <summary>
                 Store the variant index of the chest item to the ZDO if the variant has changed
             </summary>
