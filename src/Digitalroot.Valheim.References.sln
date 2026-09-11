@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.9.12120.119 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E5C5D2B9-639B-48CF-B5B0-E44FD7F24B1E}"
 	ProjectSection(SolutionItems) = preProject
@@ -24,8 +24,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D1947A80-A
 		..\docs\README.md = ..\docs\README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{CD69CB07-63E0-4A9A-BBA1-11E965126979}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Digitalroot.Valheim.References", "Digitalroot.Valheim.References\Digitalroot.Valheim.References.csproj", "{85E44F31-2FE7-47C7-B21E-4218FBF9E023}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Digitalroot.Valheim.References.EpicLoot", "Digitalroot.Valheim.References.EpicLoot\Digitalroot.Valheim.References.EpicLoot.csproj", "{75BC22B7-D930-4B5C-9AF7-3C49597EE421}"
@@ -40,10 +38,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CD69CB07-63E0-4A9A-BBA1-11E965126979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD69CB07-63E0-4A9A-BBA1-11E965126979}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD69CB07-63E0-4A9A-BBA1-11E965126979}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD69CB07-63E0-4A9A-BBA1-11E965126979}.Release|Any CPU.Build.0 = Release|Any CPU
 		{85E44F31-2FE7-47C7-B21E-4218FBF9E023}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{85E44F31-2FE7-47C7-B21E-4218FBF9E023}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85E44F31-2FE7-47C7-B21E-4218FBF9E023}.Release|Any CPU.ActiveCfg = Release|Any CPU
