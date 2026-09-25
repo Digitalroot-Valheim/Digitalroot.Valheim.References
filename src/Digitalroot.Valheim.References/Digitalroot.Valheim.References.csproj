@@ -21,12 +21,12 @@
     <Company>Digitalroot Technologies</Company>
     <Product>Digitalroot Valheim References</Product>
     <Description>References for Valheim</Description>
-    <PackageReleaseNotes>Valheim 1.0.15</PackageReleaseNotes>
+    <PackageReleaseNotes>Valheim 1.0.16</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <NoBuild>false</NoBuild>
-    <Version>1.0.15</Version>
+    <Version>1.0.16</Version>
     <RestoreAdditionalProjectSources>
       https://api.nuget.org/v3/index.json;
       https://nuget.bepinex.dev/v3/index.json;
