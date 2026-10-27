@@ -25,6 +25,7 @@ call assembly-publicizer "%ValheimInstallPath:"=%\assembly_sunshafts.dll" %OPTIO
 call assembly-publicizer "%ValheimInstallPath:"=%\assembly_utils.dll" %OPTIONS% -o %PublicizePath%
 call assembly-publicizer "%ValheimInstallPath:"=%\assembly_valheim.dll" %OPTIONS% -o %PublicizePath%
 call assembly-publicizer "%ValheimInstallPath:"=%\gui_framework.dll" %OPTIONS% -o %PublicizePath%
+call assembly-publicizer "%ValheimInstallPath:"=%\SoftReferenceableAssets.dll" %OPTIONS% -o %PublicizePath%
 
 ENDLOCAL
 
